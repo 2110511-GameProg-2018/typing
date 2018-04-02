@@ -16,8 +16,8 @@ public class TypingUI : MonoBehaviour {
 	public Text typedText;
 	public CompleteWordEvent onCompleteWord;
 	public WrongWordEvent onWrongWord;
-
 	private int wrongCount = 0;
+    public Combo combo;
 
 	// Use this for initialization
 	void Start () {
