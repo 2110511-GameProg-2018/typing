@@ -9,10 +9,13 @@ public class TypingUI : MonoBehaviour {
 
 	[Serializable]
 	public class CompleteWordEvent : UnityEvent{}
+	[Serializable]
+	public class WrongWordEvent : UnityEvent{}
 
 	public Text untypedText;
 	public Text typedText;
 	public CompleteWordEvent onCompleteWord;
+	public WrongWordEvent onWrongWord;
 
 	private int wrongCount = 0;
 
@@ -78,6 +81,7 @@ public class TypingUI : MonoBehaviour {
 		}
 		if (untypedText.text [0] != ' ') {
 			text = ReplaceLastWord (text, EncodeColor (word, Color.red));
+			onWrongWord.Invoke ();
 		}
 		else {
 			onCompleteWord.Invoke ();
