@@ -22,18 +22,10 @@ public class Stat : MonoBehaviour {
         time += Time.deltaTime;
         Calculate();
 	}
-    /*
     public void UpdateCorrectWord(int charInWord)
     {
         correctWord += 1;
         correctChar += charInWord;
-    }
-    */
-
-    public void UpdateCorrectWord()
-    {
-        correctWord += 1;
-        correctChar += 3;
     }
 
     public void UpdateWorngWord()
