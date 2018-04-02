@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0.21379328, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -184,8 +184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: 0, y: -231}
+  m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &464150495
 GameObject:
@@ -196,7 +196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 464150497}
   - component: {fileID: 464150496}
-  - component: {fileID: 464150498}
   m_Layer: 0
   m_Name: StatTest
   m_TagString: Untagged
@@ -215,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3a1b04e2b43404bb083e63d0780130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingStat: {fileID: 464150498}
+  typingStat: {fileID: 1512390454}
   typingStatText: {fileID: 295037754}
 --- !u!4 &464150497
 Transform:
@@ -230,24 +229,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &464150498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 464150495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7187d903b1cd34482f4d859e908daf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  correctWord: 0
-  correctChar: 0
-  wrongWord: 0
-  accuracy: 0
-  wpm: 0
-  cpm: 0
-  time: 0
 --- !u!1 &707392235
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512390453}
   - component: {fileID: 1512390452}
+  - component: {fileID: 1512390454}
   m_Layer: 0
   m_Name: TypingUI
   m_TagString: Untagged
@@ -528,38 +510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   untypedText: {fileID: 1664697116}
   typedText: {fileID: 707392237}
-  onCompleteWord:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 464150498}
-        m_MethodName: UpdateCorrectWord
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: TypingUI+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onWrongword:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 464150498}
-        m_MethodName: UpdateWorngWord
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: TypingUI+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  charCount: 0
+  typingStat: {fileID: 1512390454}
 --- !u!4 &1512390453
 Transform:
   m_ObjectHideFlags: 0
@@ -573,6 +525,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512390454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512390451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7187d903b1cd34482f4d859e908daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctWord: 0
+  correctChar: 0
+  wrongWord: 0
+  accuracy: 0
+  wpm: 0
+  cpm: 0
+  time: 0
 --- !u!1 &1653986817
 GameObject:
   m_ObjectHideFlags: 0
