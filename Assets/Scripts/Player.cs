@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public Animator anim;
+    public Weapon currentWeapon;
     public int hp;
     public int dmg;
 
