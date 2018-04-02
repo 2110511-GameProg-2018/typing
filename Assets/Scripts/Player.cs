@@ -14,13 +14,12 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    public void Attack(Enemy enemy)
     {
-        if (Input.GetKeyDown("a"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            Attack();
+            anim.Play("Attack", -1, 0f);
         }
-        if (Input.GetKeyDown("d"))
         enemy.Damaged(dmg);
     }
 
