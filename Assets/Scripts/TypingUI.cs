@@ -13,6 +13,7 @@ public class TypingUI : MonoBehaviour {
 	public Text untypedText;
 	public Text typedText;
 	public CompleteWordEvent onCompleteWord;
+    public CompleteWordEvent onWrongword;
 
 	private int wrongCount = 0;
 
@@ -78,6 +79,7 @@ public class TypingUI : MonoBehaviour {
 		}
 		if (untypedText.text [0] != ' ') {
 			text = ReplaceLastWord (text, EncodeColor (word, Color.red));
+            onWrongword.Invoke ();
 		}
 		else {
 			onCompleteWord.Invoke ();
