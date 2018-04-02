@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 1512390453}
   - component: {fileID: 1512390452}
   m_Layer: 0
-  m_Name: TypingUIController
+  m_Name: TypingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,8 +481,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: TypingUIController+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: TypingUI+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1512390453
 Transform:
   m_ObjectHideFlags: 0
