@@ -5,13 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public Animator anim;
     public int hp;
+    public int dmg;
 
-	void Start () {
+    public Player(int hp, int dmg)
+    {
+        this.hp = hp;
+        this.dmg = dmg;
         anim = GetComponent<Animator>();
-        hp = 100;
-	}
+    }
 
-    // Update use for Test
     void Update()
     {
         if (Input.GetKeyDown("a"))
@@ -19,20 +21,16 @@ public class Player : MonoBehaviour {
             Attack();
         }
         if (Input.GetKeyDown("d"))
-        {
-            Damaged(1);
-            print("HP = " + hp);
-        }
-    }
-
-    public void Attack()
-    {
-        anim.Play("Attack", -1, 0f);
+        enemy.Damaged(dmg);
     }
 
     public void Damaged(int damage)
     {
-        anim.Play("Damaged", -1, 0f);
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            anim.Play("Damaged", -1, 0f);
+        }
         hp = hp - damage;
     }
+
 }
