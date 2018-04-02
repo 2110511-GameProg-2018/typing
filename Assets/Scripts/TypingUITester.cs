@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TypingUITester : MonoBehaviour {
 
 	public Text scoreText;
-
 	int score = 0;
 
 	// Use this for initialization
