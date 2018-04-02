@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 423839032}
   - component: {fileID: 423839030}
   m_Layer: 0
-  m_Name: Skeleton@Skin
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 497436509}
   - component: {fileID: 497436506}
   m_Layer: 0
-  m_Name: Soldier_Rigged
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
