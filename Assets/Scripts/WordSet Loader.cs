@@ -5,10 +5,9 @@ using System.IO;
 using UnityEngine;
 
 public class WordSetLoader : MonoBehaviour {
-    
+    List<string> WordPool = new List<string>();
     public List<string> LoadWord(string filename) // "filename.txt"
     {
-        List<string> set = new List<string> ();
         string[] lines = File.ReadAllLines("./Assets/"+filename);
         char[] delimiter = {' '};
         foreach(string line in lines)
@@ -16,10 +15,14 @@ public class WordSetLoader : MonoBehaviour {
             string[] words = line.Split(delimiter);
             foreach(string word in words)
             {
-                set.Add(word);
+                WordPool.Add(word);
             }
         }
-        return set;
+        return WordPool;
+    }
+    public List<string> getWordPool()
+    {
+        return WordPool;
     }
 	// Use this for initialization
 	void Start () {

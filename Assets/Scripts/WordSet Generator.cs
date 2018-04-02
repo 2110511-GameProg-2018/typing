@@ -10,9 +10,9 @@ public class WordSetGenerator : WordSetLoader {
         int i = rnd.Next(set.Count);
         return set[i];
     }*/
-    public List<string> getRandomWord(int n,string filename) //n - จำนวนคำ , filename - ชื่อไฟล์ที่ต้องการสุ่ม
+    public List<string> getRandomWords(int n,string filename) //n - จำนวนคำ , filename - ชื่อไฟล์ที่ต้องการสุ่ม
     {
-        List<string> set1 = LoadWord(filename);
+        List<string> set1 = getWordPool();
         List<string> set2 = new List<string>();
         for (int i = 0; i < n; i++)
         {
