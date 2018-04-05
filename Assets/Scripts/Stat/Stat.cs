@@ -12,8 +12,9 @@ public class Stat : MonoBehaviour {
     public float time;
 
     public TypingUI typingUI;
+    public bool running = true;
 
-	void Start () {
+    void Start () {
         correctWord = 0;
         correctChar = 0;
         wrongWord = 0;
@@ -21,9 +22,12 @@ public class Stat : MonoBehaviour {
 	}
 	
 	void Update () {
-        time += Time.deltaTime;
-        Calculate();
-	}
+        if (running)
+        {
+            time += Time.deltaTime;
+            Calculate();
+        }
+	}   
     public void UpdateCorrectWord()
     {
         correctWord += 1;
