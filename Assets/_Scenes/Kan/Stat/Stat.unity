@@ -575,6 +575,7 @@ MonoBehaviour:
   wpm: 0
   cpm: 0
   time: 0
+  typingUI: {fileID: 1512390452}
 --- !u!1 &1653986817
 GameObject:
   m_ObjectHideFlags: 0
