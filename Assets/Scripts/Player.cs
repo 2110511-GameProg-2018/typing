@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     public Animator anim;
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
+	public Image healthBar;
+	public Image manaBar;
+
+	private int maxHp;
 
     public Player(int hp, int dmg)
     {
         this.hp = hp;
         this.dmg = dmg;
+		healthBar.fillAmount = 1;
         anim = GetComponent<Animator>();
     }
 
@@ -31,6 +37,7 @@ public class Player : MonoBehaviour {
             anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
+		healthBar.fillAmount = (float)hp / (float)maxHp;
     }
 
 }
