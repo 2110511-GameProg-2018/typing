@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class Enemy : MonoBehaviour
     public int hp;
     public int dmg;
 
+	private Image healthBar;
+	private int maxHp;
+
     public Enemy(int hp, int dmg)
     {
         this.hp = hp;
         this.dmg = dmg;
+		maxHp = hp;
         anim = GetComponent<Animator>();
 
     }
@@ -32,5 +37,12 @@ public class Enemy : MonoBehaviour
             anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
+		healthBar.fillAmount = (float)hp / (float)maxHp;
     }
+
+	public void SetHealthBar(Image image) {
+		healthBar = image;
+		healthBar.fillAmount = 1;
+		maxHp = hp;
+	}
 }
