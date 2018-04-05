@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+        player.maxHp = player.hp;
 		currentEnemy.SetHealthBar (enemyHealthBar);
 	}
 	
