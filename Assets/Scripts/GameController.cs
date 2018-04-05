@@ -8,7 +8,11 @@ public class GameController : MonoBehaviour {
 	public Enemy currentEnemy;
 	public Image enemyHealthBar;
 
-	private Player player;
+    public Stat stat;
+    public TypingUI typingUI;
+    public Text statText;
+
+    private Player player;
 
 	// Use this for initialization
 	void Start () {
@@ -24,4 +28,14 @@ public class GameController : MonoBehaviour {
 	public void CompleteWord() {
 		player.Attack (currentEnemy);
 	}
+
+    public void EndGame()
+    {
+        stat.running = false;
+        typingUI.runinng = false;
+        statText.text = "Time = " + (int)stat.time
+            + "  WPM = " + stat.wpm + "  CPM = " + stat.cpm
+            + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
+            + "\nAccuracy = " + stat.accuracy + "  Correct Char = " + stat.correctChar;
+    }
 }

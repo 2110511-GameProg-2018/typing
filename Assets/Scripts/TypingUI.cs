@@ -19,12 +19,12 @@ public class TypingUI : MonoBehaviour {
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
 
-	  public Text untypedText;
-  	public Text typedText;
-
 
     public int charCount = 0;
     public Stat typingStat;
+
+    public bool runinng = true;
+
     private int wrongCount = 0;
 
 	// Use this for initialization
@@ -36,27 +36,35 @@ public class TypingUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		HandleTypeInput ();
+        HandleTypeInput();
 	}
 
 	void HandleTypeInput () {
 		string input = Input.inputString;
 		char c;
-		for (int i = 0; i < input.Length; i++) {
-			c = input [i];
-			if (c == "\b"[0]) {
-				TypedBackspace ();
-			}
-			else if (c == ' ') {
-				TypedSpace ();
-			}
-			else if (c == untypedText.text [0]) {
-				TypedChar (c, true);
-			}
-			else {
-				TypedChar (c, false);
-			}
-		}
+        if (runinng)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                c = input[i];
+                if (c == "\b"[0])
+                {
+                    TypedBackspace();
+                }
+                else if (c == ' ')
+                {
+                    TypedSpace();
+                }
+                else if (c == untypedText.text[0])
+                {
+                    TypedChar(c, true);
+                }
+                else
+                {
+                    TypedChar(c, false);
+                }
+            }
+        }
 	}
 
 	void TypedBackspace() {
