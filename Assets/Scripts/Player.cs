@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 
 	public Image healthBar;
 	public Image manaBar;
-	private int maxHp;
+    public int maxHp;
 
     public GameController gameController;
 
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
     {
         this.hp = hp;
         this.dmg = dmg;
+        maxHp = hp;
 		healthBar.fillAmount = 1;
         anim = GetComponent<Animator>();
     }
