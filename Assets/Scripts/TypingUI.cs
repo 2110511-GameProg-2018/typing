@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
 
 public class TypingUI : MonoBehaviour {
+    [Serializable]
+    public class CompleteWordEvent : UnityEvent { }
+    [Serializable]
+    public class WrongWordEvent : UnityEvent { }
+    
+    
 
-	public Text untypedText;
-	public Text typedText;
+    public Text untypedText;
+    public Text typedText;
+
+    public CompleteWordEvent onCompleteWord;
+    public WrongWordEvent onWrongWord;
+
     public int charCount = 0;
     public Stat typingStat;
-
     private int wrongCount = 0;
 
 	// Use this for initialization
@@ -76,10 +86,10 @@ public class TypingUI : MonoBehaviour {
 		}
 		if (untypedText.text [0] != ' ') {
 			text = ReplaceLastWord (text, EncodeColor (word, Color.red));
-            typingStat.UpdateWorngWord();
+            onWrongWord.Invoke();
 		}
 		else {
-            typingStat.UpdateCorrectWord(charCount);
+            onCompleteWord.Invoke();
 		}
 
         wrongCount = 0;

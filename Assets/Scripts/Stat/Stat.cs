@@ -11,6 +11,8 @@ public class Stat : MonoBehaviour {
     public int cpm;
     public float time;
 
+    public TypingUI typingUI;
+
 	void Start () {
         correctWord = 0;
         correctChar = 0;
@@ -22,10 +24,10 @@ public class Stat : MonoBehaviour {
         time += Time.deltaTime;
         Calculate();
 	}
-    public void UpdateCorrectWord(int charInWord)
+    public void UpdateCorrectWord()
     {
         correctWord += 1;
-        correctChar += charInWord;
+        correctChar += typingUI.charCount;
     }
 
     public void UpdateWorngWord()
