@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using System;
+using UnityEngine.Events;
 
 public class TypingUI : MonoBehaviour {
+    [Serializable]
+    public class CompleteWordEvent : UnityEvent { }
+    [Serializable]
+    public class WrongWordEvent : UnityEvent { }
+    
+    
 
-	[Serializable]
-	public class CompleteWordEvent : UnityEvent{}
-	[Serializable]
-	public class WrongWordEvent : UnityEvent{}
+    public Text untypedText;
+    public Text typedText;
 
-	public Text untypedText;
-	public Text typedText;
-	public CompleteWordEvent onCompleteWord;
-	public WrongWordEvent onWrongWord;
+    public CompleteWordEvent onCompleteWord;
+    public WrongWordEvent onWrongWord;
 
-	private int wrongCount = 0;
+	  public Text untypedText;
+  	public Text typedText;
+
+
+    public int charCount = 0;
+    public Stat typingStat;
+    private int wrongCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -61,6 +69,7 @@ public class TypingUI : MonoBehaviour {
 
 		if (wrongCount > 0) {
 			wrongCount--;
+            charCount--;
 			if (wrongCount == 0) {
 				text = ReplaceLastWord (text, EncodeColor (word, Color.green));
 			}
@@ -81,21 +90,23 @@ public class TypingUI : MonoBehaviour {
 		}
 		if (untypedText.text [0] != ' ') {
 			text = ReplaceLastWord (text, EncodeColor (word, Color.red));
+
 			onWrongWord.Invoke ();
 		}
 		else {
-			onCompleteWord.Invoke ();
+            onCompleteWord.Invoke();
 		}
 
-		wrongCount = 0;
+        wrongCount = 0;
+        charCount = 0;
 		untypedText.text = untypedText.text.Remove (0, untypedText.text.IndexOf(' ') + 1);
 		typedText.text = text.Insert (text.Length, " " + EncodeColor("", Color.green));
 	}
 
 	void TypedChar(char c, bool correct) {
 		string text = typedText.text;
-
-		if (!correct) {
+        charCount++;
+        if (!correct) {
 			if (wrongCount == 0) {
 				string word = GetLastWord (text);
 				text = ReplaceLastWord (text, EncodeColor (word, Color.red));
