@@ -510,6 +510,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   untypedText: {fileID: 1664697116}
   typedText: {fileID: 707392237}
+  onCompleteWord:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1512390454}
+        m_MethodName: UpdateCorrectWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TypingUI+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onWrongWord:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1512390454}
+        m_MethodName: UpdateWorngWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TypingUI+WrongWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   charCount: 0
   typingStat: {fileID: 1512390454}
 --- !u!4 &1512390453
