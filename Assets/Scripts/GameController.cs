@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public Stat stat;
     public TypingUI typingUI;
     public Text statText;
+    public Text resultText;
 
     private Player player;
 
@@ -30,10 +31,11 @@ public class GameController : MonoBehaviour {
 		player.Attack (currentEnemy);
 	}
 
-    public void EndGame()
+    public void EndGame(string result)
     {
         stat.running = false;
         typingUI.runinng = false;
+        resultText.text = result;
         statText.text = "Time = " + (int)stat.time
             + "  WPM = " + stat.wpm + "  CPM = " + stat.cpm
             + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
