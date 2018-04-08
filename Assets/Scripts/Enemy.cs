@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         {
             anim.Play("Death", -1, 0f);
         }
-        gameController.EndGame();
+        gameController.EndGame("YOU WIN !!");
     }
 
     public bool IsDead()

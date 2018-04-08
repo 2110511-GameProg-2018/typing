@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
         {
             anim.Play("Death", -1, 0f);
         }
-        gameController.EndGame();
+        gameController.EndGame("YOU LOSE !!");
     }
 
     public bool IsDead()
