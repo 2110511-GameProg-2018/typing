@@ -483,6 +483,13 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: TypingUI+CompleteWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  onWrongWord:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TypingUI+WrongWordEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  charCount: 0
+  typingStat: {fileID: 0}
 --- !u!4 &1512390453
 Transform:
   m_ObjectHideFlags: 0
