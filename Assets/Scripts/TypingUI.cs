@@ -19,10 +19,6 @@ public class TypingUI : MonoBehaviour {
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
 
-	  public Text untypedText;
-  	public Text typedText;
-
-
     public int charCount = 0;
     public Stat typingStat;
     private int wrongCount = 0;
