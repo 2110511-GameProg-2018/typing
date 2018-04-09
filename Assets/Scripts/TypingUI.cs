@@ -15,22 +15,22 @@ public class TypingUI : MonoBehaviour {
 
     public Text untypedText;
     public Text typedText;
+	private WordSetGenerator generator = new WordSetGenerator();
 
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
 
-	  public Text untypedText;
-  	public Text typedText;
-
-
     public int charCount = 0;
     public Stat typingStat;
     private int wrongCount = 0;
+	private int wordLeftCount = 0;
 
 	// Use this for initialization
 	void Start () {
-		untypedText.text = "mhee ant bird cat dog elephant frog giraffe horse iguana jaguar kangaroo lion monkey " +
-						   "narwhal owl penguin quail rat snake turtle urial vulture whale xenathra yak zebra";
+//		untypedText.text = "mhee ant bird cat dog elephant frog giraffe horse iguana jaguar kangaroo lion monkey " +
+//						   "narwhal owl penguin quail rat snake turtle urial vulture whale xenathra yak zebra";
+		generator.LoadWord("test.txt");
+		addWord (40);
 		typedText.text = " " + EncodeColor ("", Color.green);
 	}
 	
@@ -101,6 +101,10 @@ public class TypingUI : MonoBehaviour {
         charCount = 0;
 		untypedText.text = untypedText.text.Remove (0, untypedText.text.IndexOf(' ') + 1);
 		typedText.text = text.Insert (text.Length, " " + EncodeColor("", Color.green));
+
+		if (--wordLeftCount <= 20) {
+			addWord (40);
+		}
 	}
 
 	void TypedChar(char c, bool correct) {
@@ -155,5 +159,10 @@ public class TypingUI : MonoBehaviour {
 		int start = s.IndexOf ('>');
 		int stop = s.LastIndexOf ('<');
 		return s.Substring(start+1, stop-start-1);
+	}
+
+	void addWord(int n) {
+		untypedText.text += string.Join(" ", generator.getRandomWords(40, "").ToArray()) + " ";
+		wordLeftCount += n;
 	}
 }
