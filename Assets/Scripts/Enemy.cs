@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 	private Image healthBar;
 	private int maxHp;
 
+    public GameController gameController;
+
     public Enemy(int hp, int dmg)
     {
         this.hp = hp;
@@ -23,11 +25,14 @@ public class Enemy : MonoBehaviour
 
     public void Attack(Player player)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (!IsDead())
         {
-            anim.Play("Attack", -1, 0f);
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                anim.Play("Attack", -1, 0f);
+            }
+            player.Damaged(dmg);
         }
-        player.Damaged(dmg);
     }
 
     public void Damaged(int damage)
@@ -37,6 +42,13 @@ public class Enemy : MonoBehaviour
             anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
+
+        if (hp <= 0)
+        {
+            hp = 0;
+            Die();
+        }
+
 		healthBar.fillAmount = (float)hp / (float)maxHp;
     }
 
@@ -45,4 +57,18 @@ public class Enemy : MonoBehaviour
 		healthBar.fillAmount = 1;
 		maxHp = hp;
 	}
+
+    public void Die()
+    {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            anim.Play("Death", -1, 0f);
+        }
+        gameController.EndGame("YOU WIN !!");
+    }
+
+    public bool IsDead()
+    {
+        return hp == 0;
+    }
 }
