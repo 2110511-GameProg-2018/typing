@@ -8,9 +8,12 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public int hp;
     public int dmg;
+	public float attackPeriod;
 
 	private Image healthBar;
 	private int maxHp;
+	private Player player;
+	private float attackTimer;
 
     public Enemy(int hp, int dmg)
     {
@@ -18,8 +21,26 @@ public class Enemy : MonoBehaviour
         this.dmg = dmg;
 		maxHp = hp;
         anim = GetComponent<Animator>();
-
     }
+
+	void Start () {
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		attackTimer = attackPeriod;
+	}
+
+	void Update () {
+
+		//don't do anything without target
+		if(player == null) return;
+
+		//found target, what now ?
+		if(attackTimer > 0f){
+			attackTimer -= Time.deltaTime;
+			if(attackTimer <= 0f){
+				Attack (player);
+			}
+		}
+	}
 
     public void Attack(Player player)
     {
@@ -27,7 +48,8 @@ public class Enemy : MonoBehaviour
         {
             anim.Play("Attack", -1, 0f);
         }
-        player.Damaged(dmg);
+		player.Damaged(dmg);
+		attackTimer = attackPeriod;
     }
 
     public void Damaged(int damage)
