@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     public int hp;
     public int dmg;
 	public float attackPeriod;
+    public float attackDelay;
+    public bool running = true;
 
-	private Image healthBar;
+    private Image healthBar;
 	private int maxHp;
 	private Player player;
 	private float attackTimer;
@@ -35,26 +37,28 @@ public class Enemy : MonoBehaviour
 		//don't do anything without target
 		if(player == null) return;
 
-		//found target, what now ?
-		if(attackTimer > 0f){
-			attackTimer -= Time.deltaTime;
-			if(attackTimer <= 0f){
-				Attack (player);
-			}
-		}
+        //found target, what now ?
+        if (running)
+        {
+            if (attackTimer > 0f)
+            {
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0f)
+                {
+                    Attack(player);
+                }
+            }
+        }
 	}
 
     public void Attack(Player player)
     {
-        if (!IsDead())
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                anim.Play("Attack", -1, 0f);
-            }
-			player.Damaged(dmg);
-			attackTimer = attackPeriod;
+            anim.Play("Attack", -1, 0f);
         }
+        StartCoroutine(Delay(player));
+        attackTimer = attackPeriod;
     }
 
     public void Damaged(int damage)
@@ -92,5 +96,11 @@ public class Enemy : MonoBehaviour
     public bool IsDead()
     {
         return hp == 0;
+    }
+
+    private IEnumerator Delay(Player player)
+    {
+        yield return new WaitForSeconds(attackDelay);
+        player.Damaged(dmg);
     }
 }

@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour {
     {
         stat.running = false;
         typingUI.runinng = false;
+        currentEnemy.running = false;
+        player.running = false;
         resultText.text = result;
         statText.text = "Time = " + (int)stat.time
             + "  WPM = " + stat.wpm + "  CPM = " + stat.cpm
