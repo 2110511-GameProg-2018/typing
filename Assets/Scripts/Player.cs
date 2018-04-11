@@ -8,8 +8,11 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
+    public float attackDelay;
+    public bool running = true;
+    public bool attackCancellation = false;
 
-	public Image healthBar;
+    public Image healthBar;
 	public Image manaBar;
     public int maxHp;
 
@@ -26,22 +29,17 @@ public class Player : MonoBehaviour {
 
     public void Attack(Enemy enemy)
     {
-        if (!IsDead())
+        if (running)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                anim.Play("Attack", -1, 0f);
-            }
-            enemy.Damaged(dmg);
+            anim.Play("Attack", -1, 0f);
+            StartCoroutine(Delay(enemy));
+            attackCancellation = false;
         }
     }
 
     public void Damaged(int damage)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            anim.Play("Damaged", -1, 0f);
-        }
+        anim.Play("Damaged", -1, 0f);
         hp = hp - damage;
 
         if (hp <= 0)
@@ -55,15 +53,20 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
-        {
-            anim.Play("Death", -1, 0f);
-        }
+        anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU LOSE !!");
     }
 
     public bool IsDead()
     {
         return hp == 0;
+    }
+
+    private IEnumerator Delay(Enemy enemy)
+    {
+        yield return new WaitForSeconds(attackDelay);
+
+        if(!attackCancellation)
+            enemy.Damaged(dmg);
     }
 }

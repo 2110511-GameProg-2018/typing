@@ -2964,12 +2964,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1310692441}
   currentWeapon: {fileID: 0}
-  hp: 10
-  dmg: 50
+  hp: 100
+  dmg: 5
+  attackDelay: 0.5
+  running: 1
+  attackCancellation: 0
   healthBar: {fileID: 975480348}
   manaBar: {fileID: 815215032}
   maxHp: 0
-  running: 1
   gameController: {fileID: 1958727780}
 --- !u!95 &1310692441
 Animator:
@@ -2984,7 +2986,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a7988fbb25871bb439e3d871fc4df8b8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3747,50 +3749,6 @@ Transform:
   m_Father: {fileID: 1790947821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1597361134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1597361135}
-  - component: {fileID: 1597361136}
-  m_Layer: 0
-  m_Name: TestDeath
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1597361135
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1597361134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597361136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1597361134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c604a4756607f68478438600379602e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
-  timeInSec: 0
-  player: {fileID: 1310692440}
-  enemy: {fileID: 2088179512}
 --- !u!1 &1599189045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4473,46 @@ Transform:
   - {fileID: 296084194}
   m_Father: {fileID: 1586269766}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808309867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1808309869}
+  - component: {fileID: 1808309868}
+  m_Layer: 0
+  m_Name: AnimationEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1808309868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808309867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7caa80ad4b273439e658acae3301dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1808309869
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808309867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824748161
 GameObject:
@@ -5602,8 +5600,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2088179513}
   hp: 100
-  dmg: 4
-  attackPeriod: 0
+  dmg: 5
+  attackPeriod: 4
+  attackDelay: 1
   running: 1
   gameController: {fileID: 1958727780}
 --- !u!95 &2088179513
