@@ -53,17 +53,14 @@ public class Enemy : MonoBehaviour
 
     public void Attack(Player player)
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            anim.Play("Attack", -1, 0f);
-        }
+        anim.Play("Attack", -1, 0f);
         StartCoroutine(Delay(player));
         attackTimer = attackPeriod;
     }
 
     public void Damaged(int damage)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             anim.Play("Damaged", -1, 0f);
         }
@@ -86,10 +83,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
-        {
-            anim.Play("Death", -1, 0f);
-        }
+        anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU WIN !!");
     }
 
@@ -101,6 +95,8 @@ public class Enemy : MonoBehaviour
     private IEnumerator Delay(Player player)
     {
         yield return new WaitForSeconds(attackDelay);
+            
         player.Damaged(dmg);
+        player.attackCancellation = true;
     }
 }
