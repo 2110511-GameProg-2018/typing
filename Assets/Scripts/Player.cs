@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public int dmg;
     public float attackDelay;
     public bool running = true;
+    public bool attackCancellation = false;
 
     public Image healthBar;
 	public Image manaBar;
@@ -30,11 +31,9 @@ public class Player : MonoBehaviour {
     {
         if (running)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                anim.Play("Attack", -1, 0f);
-            }
+            anim.Play("Attack", -1, 0f);
             StartCoroutine(Delay(enemy));
+            attackCancellation = false;
         }
     }
 
@@ -54,10 +53,7 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
-        {
-            anim.Play("Death", -1, 0f);
-        }
+        anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU LOSE !!");
     }
 
@@ -69,6 +65,8 @@ public class Player : MonoBehaviour {
     private IEnumerator Delay(Enemy enemy)
     {
         yield return new WaitForSeconds(attackDelay);
-        enemy.Damaged(dmg);
+
+        if(!attackCancellation)
+            enemy.Damaged(dmg);
     }
 }

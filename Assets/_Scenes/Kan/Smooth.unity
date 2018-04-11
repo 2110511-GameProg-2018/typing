@@ -2964,10 +2964,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1310692441}
   currentWeapon: {fileID: 0}
-  hp: 10
+  hp: 100
   dmg: 5
-  attackDelay: 0
+  attackDelay: 0.5
   running: 1
+  attackCancellation: 0
   healthBar: {fileID: 975480348}
   manaBar: {fileID: 815215032}
   maxHp: 0
@@ -5599,8 +5600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2088179513}
   hp: 100
-  dmg: 3
-  attackPeriod: 3
+  dmg: 5
+  attackPeriod: 4
   attackDelay: 1
   running: 1
   gameController: {fileID: 1958727780}
