@@ -95,8 +95,11 @@ public class Enemy : MonoBehaviour
     private IEnumerator Delay(Player player)
     {
         yield return new WaitForSeconds(attackDelay);
-            
-        player.Damaged(dmg);
-        player.attackCancellation = true;
+
+        if (running)
+        {
+            player.Damaged(dmg);
+            player.attackCancellation = true;
+        }
     }
 }
