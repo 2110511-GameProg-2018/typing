@@ -61,7 +61,9 @@ public class Enemy : MonoBehaviour
     {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
+            // Set the animation to be 'damaged'
             anim.SetTrigger("DamagedTrigger");
+
             // anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
@@ -93,7 +95,7 @@ public class Enemy : MonoBehaviour
         return hp == 0;
     }
 
-    
+
     /* This function is called on AnimationEvent 'HIT' */
     private void Hit() 
     {

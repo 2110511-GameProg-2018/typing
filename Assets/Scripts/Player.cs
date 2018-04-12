@@ -35,12 +35,16 @@ public class Player : MonoBehaviour {
             anim.SetTrigger("AttackTrigger");
             // anim.Play("Attack", -1, 0f);
             
+            
         }
     }
 
     public void Damaged(int damage)
     {
         anim.SetTrigger("DamagedTrigger");
+        
+        // Prevent the attack occuring after damaged (trigger still set)
+        anim.ResetTrigger("AttackTrigger");
         // anim.Play("Damaged", -1, 0f);
         hp = hp - damage;
 
