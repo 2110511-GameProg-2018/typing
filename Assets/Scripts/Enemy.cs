@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     public int hp;
     public int dmg;
 	public float attackPeriod;
-    public float attackDelay;
     public bool running = true;
 
     private Image healthBar;
@@ -55,7 +54,6 @@ public class Enemy : MonoBehaviour
     {
         anim.SetTrigger("AttackTrigger");
         // anim.Play("Attack", -1, 0f);
-        // StartCoroutine(Delay(player));
         attackTimer = attackPeriod;
     }
 
@@ -95,6 +93,8 @@ public class Enemy : MonoBehaviour
         return hp == 0;
     }
 
+    
+    /* This function is called on AnimationEvent 'HIT' */
     private void Hit() 
     {
         if (running)
@@ -103,16 +103,4 @@ public class Enemy : MonoBehaviour
             gameController.player.attackCancellation = true;
         }
     }
-/*
-    private IEnumerator Delay(Player player)
-    {
-        yield return new WaitForSeconds(attackDelay);
-
-        if (running)
-        {
-            player.Damaged(dmg);
-            player.attackCancellation = true;
-        }
-    }
-    */
 }

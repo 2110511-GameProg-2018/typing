@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
-    public float attackDelay;
     public bool running = true;
     public bool attackCancellation = false;
 
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour {
             currentEnemy = enemy;
             anim.SetTrigger("AttackTrigger");
             // anim.Play("Attack", -1, 0f);
-            // StartCoroutine(Delay(enemy));
             
         }
     }
@@ -74,13 +72,4 @@ public class Player : MonoBehaviour {
             currentEnemy.Damaged(dmg);
         attackCancellation = false;
     }
-/*
-    private IEnumerator Delay(Enemy enemy)
-    {
-        yield return new WaitForSeconds(attackDelay);
-
-        if(!attackCancellation)
-            enemy.Damaged(dmg);
-    }
-    */
 }
