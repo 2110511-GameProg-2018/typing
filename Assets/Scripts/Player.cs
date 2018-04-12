@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     public int maxHp;
 
     public GameController gameController;
+    private Enemy currentEnemy;
 
     public Player(int hp, int dmg)
     {
@@ -31,15 +32,18 @@ public class Player : MonoBehaviour {
     {
         if (running)
         {
-            anim.Play("Attack", -1, 0f);
-            StartCoroutine(Delay(enemy));
-            attackCancellation = false;
+            currentEnemy = enemy;
+            anim.SetTrigger("AttackTrigger");
+            // anim.Play("Attack", -1, 0f);
+            // StartCoroutine(Delay(enemy));
+            
         }
     }
 
     public void Damaged(int damage)
     {
-        anim.Play("Damaged", -1, 0f);
+        anim.SetTrigger("DamagedTrigger");
+        // anim.Play("Damaged", -1, 0f);
         hp = hp - damage;
 
         if (hp <= 0)
@@ -53,7 +57,8 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
-        anim.Play("Death", -1, 0f);
+        anim.SetTrigger("DeadTrigger");
+        // anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU LOSE !!");
     }
 
@@ -62,6 +67,14 @@ public class Player : MonoBehaviour {
         return hp == 0;
     }
 
+    /* This function is called on AnimationEvent 'HIT' */
+    private void Hit() 
+    {
+        if(!attackCancellation)
+            currentEnemy.Damaged(dmg);
+        attackCancellation = false;
+    }
+/*
     private IEnumerator Delay(Enemy enemy)
     {
         yield return new WaitForSeconds(attackDelay);
@@ -69,4 +82,5 @@ public class Player : MonoBehaviour {
         if(!attackCancellation)
             enemy.Damaged(dmg);
     }
+    */
 }
