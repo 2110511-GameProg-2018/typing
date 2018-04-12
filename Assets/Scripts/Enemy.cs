@@ -53,8 +53,9 @@ public class Enemy : MonoBehaviour
 
     public void Attack(Player player)
     {
-        anim.Play("Attack", -1, 0f);
-        StartCoroutine(Delay(player));
+        anim.SetTrigger("AttackTrigger");
+        // anim.Play("Attack", -1, 0f);
+        // StartCoroutine(Delay(player));
         attackTimer = attackPeriod;
     }
 
@@ -62,7 +63,8 @@ public class Enemy : MonoBehaviour
     {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            anim.Play("Damaged", -1, 0f);
+            anim.SetTrigger("DamagedTrigger");
+            // anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
 
@@ -83,7 +85,8 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        anim.Play("Death", -1, 0f);
+        anim.SetTrigger("DeadTrigger");
+        // anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU WIN !!");
     }
 
@@ -92,6 +95,15 @@ public class Enemy : MonoBehaviour
         return hp == 0;
     }
 
+    private void Hit() 
+    {
+        if (running)
+        {
+            gameController.player.Damaged(dmg);
+            gameController.player.attackCancellation = true;
+        }
+    }
+/*
     private IEnumerator Delay(Player player)
     {
         yield return new WaitForSeconds(attackDelay);
@@ -102,4 +114,5 @@ public class Enemy : MonoBehaviour
             player.attackCancellation = true;
         }
     }
+    */
 }
