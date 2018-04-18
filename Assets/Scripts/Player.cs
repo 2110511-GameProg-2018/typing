@@ -8,12 +8,19 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
+    public bool running = true;
+    public bool attackCancellation = false;
 
-	public Image healthBar;
+    public Image healthBar;
 	public Image manaBar;
     public int maxHp;
 
     public GameController gameController;
+<<<<<<< HEAD
+=======
+    private Enemy currentEnemy;
+
+>>>>>>> develop
     public Player(int hp, int dmg)
     {
         this.hp = hp;
@@ -25,22 +32,23 @@ public class Player : MonoBehaviour {
 
     public void Attack(Enemy enemy)
     {
-        if (!IsDead())
+        if (running)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                anim.Play("Attack", -1, 0f);
-            }
-            enemy.Damaged(dmg);
+            currentEnemy = enemy;
+            anim.SetTrigger("AttackTrigger");
+            // anim.Play("Attack", -1, 0f);
+            
+            
         }
     }
 
     public void Damaged(int damage)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            anim.Play("Damaged", -1, 0f);
-        }
+        anim.SetTrigger("DamagedTrigger");
+        
+        // Prevent the attack occuring after damaged (trigger still set)
+        anim.ResetTrigger("AttackTrigger");
+        // anim.Play("Damaged", -1, 0f);
         hp = hp - damage;
 
         if (hp <= 0)
@@ -54,16 +62,22 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
-        {
-            anim.Play("Death", -1, 0f);
-        }
+        anim.SetTrigger("DeadTrigger");
+        // anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU LOSE !!");
     }
 
     public bool IsDead()
     {
         return hp == 0;
+    }
+
+    /* This function is called on AnimationEvent 'HIT' */
+    private void Hit() 
+    {
+        if(!attackCancellation)
+            currentEnemy.Damaged(dmg);
+        attackCancellation = false;
     }
 }
 
