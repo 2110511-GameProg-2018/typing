@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
-    public float attackDelay;
     public bool running = true;
     public bool attackCancellation = false;
 
@@ -17,6 +16,7 @@ public class Player : MonoBehaviour {
     public int maxHp;
 
     public GameController gameController;
+    private Enemy currentEnemy;
 
     public Player(int hp, int dmg)
     {
@@ -31,15 +31,21 @@ public class Player : MonoBehaviour {
     {
         if (running)
         {
-            anim.Play("Attack", -1, 0f);
-            StartCoroutine(Delay(enemy));
-            attackCancellation = false;
+            currentEnemy = enemy;
+            anim.SetTrigger("AttackTrigger");
+            // anim.Play("Attack", -1, 0f);
+            
+            
         }
     }
 
     public void Damaged(int damage)
     {
-        anim.Play("Damaged", -1, 0f);
+        anim.SetTrigger("DamagedTrigger");
+        
+        // Prevent the attack occuring after damaged (trigger still set)
+        anim.ResetTrigger("AttackTrigger");
+        // anim.Play("Damaged", -1, 0f);
         hp = hp - damage;
 
         if (hp <= 0)
@@ -53,7 +59,8 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
-        anim.Play("Death", -1, 0f);
+        anim.SetTrigger("DeadTrigger");
+        // anim.Play("Death", -1, 0f);
         gameController.EndGame("YOU LOSE !!");
     }
 
@@ -62,11 +69,11 @@ public class Player : MonoBehaviour {
         return hp == 0;
     }
 
-    private IEnumerator Delay(Enemy enemy)
+    /* This function is called on AnimationEvent 'HIT' */
+    private void Hit() 
     {
-        yield return new WaitForSeconds(attackDelay);
-
         if(!attackCancellation)
-            enemy.Damaged(dmg);
+            currentEnemy.Damaged(dmg);
+        attackCancellation = false;
     }
 }
