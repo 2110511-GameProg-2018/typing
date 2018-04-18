@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
-    public bool running = true;
+    public bool running;
     public bool attackCancellation = false;
 
     public Image healthBar;
@@ -16,11 +16,8 @@ public class Player : MonoBehaviour {
     public int maxHp;
 
     public GameController gameController;
-<<<<<<< HEAD
-=======
     private Enemy currentEnemy;
-
->>>>>>> develop
+    
     public Player(int hp, int dmg)
     {
         this.hp = hp;
@@ -37,8 +34,6 @@ public class Player : MonoBehaviour {
             currentEnemy = enemy;
             anim.SetTrigger("AttackTrigger");
             // anim.Play("Attack", -1, 0f);
-            
-            
         }
     }
 

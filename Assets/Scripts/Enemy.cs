@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public int hp;
     public int dmg;
 	public float attackPeriod;
-    public bool running = true;
+    public bool running;
 
     private Image healthBar;
 	private int maxHp;
@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 		attackTimer = attackPeriod;
-	}
+        running = true;
+    }
 
 	void Update () {
 
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0f)
                 {
+                    Debug.Log("FK");
                     Attack(player);
                 }
             }
@@ -55,6 +57,7 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("AttackTrigger");
         // anim.Play("Attack", -1, 0f);
         attackTimer = attackPeriod;
+        Debug.Log("FUCK U!!");
     }
 
     public void Damaged(int damage)
@@ -86,8 +89,15 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         anim.SetTrigger("DeadTrigger");
+        gameController.decreaseNumberEnemy();
         // anim.Play("Death", -1, 0f);
-        gameController.EndGame("YOU WIN !!");
+        if (gameController.getNumberEnemy() > 0)
+        {
+            gameController.EndLevel();
+        }
+        else{
+            gameController.EndGame("YOU WIN !!");
+        }
     }
 
     public bool IsDead()
@@ -103,6 +113,14 @@ public class Enemy : MonoBehaviour
         {
             gameController.player.Damaged(dmg);
             gameController.player.attackCancellation = true;
+        }
+    }
+
+    private void OnAttackFinish()
+    {
+        if (running)
+        {
+            gameController.player.attackCancellation = false;
         }
     }
 }
