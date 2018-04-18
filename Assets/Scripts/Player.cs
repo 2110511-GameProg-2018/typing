@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
     public int maxHp;
 
     public GameController gameController;
-
     public Player(int hp, int dmg)
     {
         this.hp = hp;
@@ -67,3 +66,4 @@ public class Player : MonoBehaviour {
         return hp == 0;
     }
 }
+

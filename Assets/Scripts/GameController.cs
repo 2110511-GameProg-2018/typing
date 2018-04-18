@@ -12,20 +12,18 @@ public class GameController : MonoBehaviour {
     public TypingUI typingUI;
     public Text statText;
     public Text resultText;
-
     private Player player;
-
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
         player.maxHp = player.hp;
 		currentEnemy.SetHealthBar (enemyHealthBar);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        
+    }
 
 	public void CompleteWord() {
 		player.Attack (currentEnemy);
