@@ -9,20 +9,23 @@ public class GameController : MonoBehaviour {
 	public Image enemyHealthBar;
 
     public Enemy[] enemies;
-
+    private int currentStage; //หาก stage ตรง enemy ถึงจะตี
     public Stat stat;
     public TypingUI typingUI;
     public Text statText;
     public Text resultText;
     private int numberEnemy;
-    private int MaxEnemy = 3;
+    private int maxEnemy = 3;
     private Player _player;
+
+
     public Player player {
         get {return _player; }
     }
     
 	// Use this for initialization
 	void Start () {
+        currentStage = 1;
         numberEnemy = 3;
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
         _player.maxHp = _player.hp;
@@ -50,6 +53,10 @@ public class GameController : MonoBehaviour {
     {
         currentEnemy = enemies[i];
     }
+    public int getCurrentStage()
+    {
+        return currentStage;
+    }
     public void CompleteWord() {
         Debug.Log("COMPLETE WORD");
 		_player.Attack(currentEnemy);
@@ -69,13 +76,15 @@ public class GameController : MonoBehaviour {
     }
     public void EndLevel()
     {
+        currentStage++;
         stat.running = false;
         typingUI.runinng = false;
         currentEnemy.running = false;
+ 
     }
     public void startLevel()
     {
-        this.setCurrentEnemy(MaxEnemy - this.getNumberEnemy());
+        this.setCurrentEnemy(maxEnemy - this.getNumberEnemy());
         stat.running = true;
         typingUI.runinng = true;
         currentEnemy.running = true;

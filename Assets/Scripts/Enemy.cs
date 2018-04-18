@@ -10,12 +10,12 @@ public class Enemy : MonoBehaviour
     public int dmg;
 	public float attackPeriod;
     public bool running;
-
+    public int stageOfEnemy;
     private Image healthBar;
 	private int maxHp;
 	private Player player;
 	private float attackTimer;
-
+    
     public GameController gameController;
 
     public Enemy(int hp, int dmg)
@@ -29,7 +29,10 @@ public class Enemy : MonoBehaviour
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 		attackTimer = attackPeriod;
-        running = true;
+        if(stageOfEnemy == gameController.getCurrentStage())
+        {
+            running = true;
+        }
     }
 
 	void Update () {
