@@ -8,11 +8,11 @@ public class PlayerRun : MonoBehaviour {
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
     private float distance = 12f;
-    private float lerpTime = 5;
+    private float lerpTime = 3;
     private float currentLerpTime = 0;
     private bool keyhit = false;
     private Player player;
-
+    public GameController gameController;
     private Animator anim;
 
     public Vector3 getStartPos()
@@ -40,7 +40,7 @@ public class PlayerRun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        if (gameController.getCurrentEnemy().IsDead() && gameController.getNumberEnemy() > 0)
         {
             this.setKeyHit(true);
         }
@@ -59,6 +59,10 @@ public class PlayerRun : MonoBehaviour {
             {
                 this.setKeyHit(false);
                 anim.SetBool("isRunning", false);
+                gameController.startLevel();
+                startPos = this.transform.position;
+                endPos = this.transform.position + Vector3.forward * distance;
+                currentLerpTime = 0;
             }
         }
     }
