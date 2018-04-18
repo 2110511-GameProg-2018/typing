@@ -8,7 +8,7 @@ public class PlayerRun : MonoBehaviour {
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
     private float distance = 12f;
-    private float lerpTime = 3;
+    private float lerpTime = 3.5f;
     private float currentLerpTime = 0;
     private bool keyhit = false;
     private Player player;
