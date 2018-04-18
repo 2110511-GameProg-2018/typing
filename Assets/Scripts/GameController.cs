@@ -13,12 +13,15 @@ public class GameController : MonoBehaviour {
     public Text statText;
     public Text resultText;
 
-    private Player player;
+    private Player _player;
+    public Player player {
+        get {return _player; }
+    }
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
-        player.maxHp = player.hp;
+		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+        _player.maxHp = _player.hp;
 		currentEnemy.SetHealthBar (enemyHealthBar);
 	}
 	
@@ -28,7 +31,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void CompleteWord() {
-		player.Attack (currentEnemy);
+		_player.Attack (currentEnemy);
 	}
 
     public void EndGame(string result)
@@ -36,7 +39,7 @@ public class GameController : MonoBehaviour {
         stat.running = false;
         typingUI.runinng = false;
         currentEnemy.running = false;
-        player.running = false;
+        _player.running = false;
         resultText.text = result;
         statText.text = "Time = " + (int)stat.time
             + "  WPM = " + stat.wpm + "  CPM = " + stat.cpm
