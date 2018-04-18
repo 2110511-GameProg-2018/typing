@@ -2969,6 +2969,7 @@ MonoBehaviour:
   healthBar: {fileID: 975480348}
   manaBar: {fileID: 815215032}
   maxHp: 0
+  running: 1
   gameController: {fileID: 1958727780}
 --- !u!95 &1310692441
 Animator:
@@ -5602,6 +5603,8 @@ MonoBehaviour:
   anim: {fileID: 2088179513}
   hp: 100
   dmg: 4
+  attackPeriod: 0
+  running: 1
   gameController: {fileID: 1958727780}
 --- !u!95 &2088179513
 Animator:
