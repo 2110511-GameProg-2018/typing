@@ -7,16 +7,18 @@ public class GameController : MonoBehaviour {
 
 	public Enemy currentEnemy;
 	public Image enemyHealthBar;
+    public Stat stat;
 
     public Enemy[] enemies;
     private int currentStage; //หาก stage ตรง enemy ถึงจะตี
-    public Stat stat;
     public TypingUI typingUI;
     public Text statText;
     public Text resultText;
+    public GameObject endPanel;
     private int numberEnemy;
     private int maxEnemy = 3;
     private Player _player;
+    private PlayerRun _playerRun;
 
 
     public Player player {
@@ -28,8 +30,10 @@ public class GameController : MonoBehaviour {
         currentStage = 1;
         numberEnemy = 3;
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		_playerRun = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerRun> ();
 		currentEnemy.SetHealthBar (enemyHealthBar);
         _player.running = true;
+        endPanel.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -72,6 +76,7 @@ public class GameController : MonoBehaviour {
             + "  WPM = " + stat.wpm + "  CPM = " + stat.cpm
             + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
             + "\nAccuracy = " + stat.accuracy + "  Correct Char = " + stat.correctChar;
+        endPanel.SetActive(true);
     }
     public void EndLevel()
     {
@@ -88,5 +93,6 @@ public class GameController : MonoBehaviour {
         typingUI.runinng = true;
         currentEnemy.running = true;
         currentEnemy.SetHealthBar(enemyHealthBar);
+        stat.removeTime(_playerRun.lerpTime);
     }
 }

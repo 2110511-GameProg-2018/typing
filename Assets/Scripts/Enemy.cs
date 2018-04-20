@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0f)
                 {
-                    Debug.Log("FK");
                     Attack(player);
                 }
             }
@@ -60,7 +59,6 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("AttackTrigger");
         // anim.Play("Attack", -1, 0f);
         attackTimer = attackPeriod;
-        Debug.Log("FUCK U!!");
     }
 
     public void Damaged(int damage)
