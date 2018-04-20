@@ -11,7 +11,8 @@ public class TypingUI : MonoBehaviour {
     [Serializable]
     public class WrongWordEvent : UnityEvent { }
     
-    
+    public Color correctColor;
+	public Color wrongColor;
 
     public Text untypedText;
     public Text typedText;
@@ -19,8 +20,6 @@ public class TypingUI : MonoBehaviour {
 
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
-
-
 
     public int charCount = 0;
     public Stat typingStat;
@@ -36,7 +35,7 @@ public class TypingUI : MonoBehaviour {
 //						   "narwhal owl penguin quail rat snake turtle urial vulture whale xenathra yak zebra";
 		generator.LoadWord("test.txt");
 		addWord (40);
-		typedText.text = " " + EncodeColor ("", Color.green);
+		typedText.text = " " + EncodeColor ("", correctColor);
 	}
 	
 	// Update is called once per frame
@@ -84,7 +83,7 @@ public class TypingUI : MonoBehaviour {
 			wrongCount--;
             charCount--;
 			if (wrongCount == 0) {
-				text = ReplaceLastWord (text, EncodeColor (word, Color.green));
+				text = ReplaceLastWord (text, EncodeColor (word, correctColor));
 			}
 		}
 		else {
@@ -102,7 +101,7 @@ public class TypingUI : MonoBehaviour {
 			return;
 		}
 		if (untypedText.text [0] != ' ') {
-			text = ReplaceLastWord (text, EncodeColor (word, Color.red));
+			text = ReplaceLastWord (text, EncodeColor (word, wrongColor));
 
 			onWrongWord.Invoke ();
 		}
@@ -113,7 +112,7 @@ public class TypingUI : MonoBehaviour {
         wrongCount = 0;
         charCount = 0;
 		untypedText.text = untypedText.text.Remove (0, untypedText.text.IndexOf(' ') + 1);
-		typedText.text = text.Insert (text.Length, " " + EncodeColor("", Color.green));
+		typedText.text = text.Insert (text.Length, " " + EncodeColor("", correctColor));
 
 		if (--wordLeftCount <= 20) {
 			addWord (40);
@@ -126,7 +125,7 @@ public class TypingUI : MonoBehaviour {
         if (!correct) {
 			if (wrongCount == 0) {
 				string word = GetLastWord (text);
-				text = ReplaceLastWord (text, EncodeColor (word, Color.red));
+				text = ReplaceLastWord (text, EncodeColor (word, wrongColor));
 			}
 			wrongCount++;
 		}
