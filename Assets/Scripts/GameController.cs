@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
         currentStage = 1;
         numberEnemy = 3;
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
-        _player.maxHp = _player.hp;
 		currentEnemy.SetHealthBar (enemyHealthBar);
         _player.running = true;
     }

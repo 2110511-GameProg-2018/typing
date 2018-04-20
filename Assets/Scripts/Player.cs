@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
     public Animator anim;
     public Weapon currentWeapon;
-    public int hp;
     public int dmg;
     public bool running;
-	  public int maxHp;
-	  public float maxMana;
-    public bool running
+	public int maxHp;
+	public float maxMana;
     public bool attackCancellation = false;
+    private int hp;
 
     public Image healthBar;
 	public Image manaBar;
@@ -28,7 +27,7 @@ public class Player : MonoBehaviour {
 	void Start() {
 		mana = 0;
 		manaStep = maxMana / 1000000;	// step = 0.0001%
-		maxHp = hp;
+		hp = maxHp;
 		healthBar.fillAmount = 1;
 		manaBar.fillAmount = 0;
 		anim = GetComponent<Animator>();
