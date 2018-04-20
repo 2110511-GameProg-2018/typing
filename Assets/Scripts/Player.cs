@@ -8,9 +8,10 @@ public class Player : MonoBehaviour {
     public Weapon currentWeapon;
     public int hp;
     public int dmg;
-	public int maxHp;
-	public float maxMana;
-    public bool running = true;
+    public bool running;
+	  public int maxHp;
+	  public float maxMana;
+    public bool running
     public bool attackCancellation = false;
 
     public Image healthBar;
@@ -22,8 +23,9 @@ public class Player : MonoBehaviour {
 
     public GameController gameController;
     private Enemy currentEnemy;
+    
 
-	void Start(){
+	void Start() {
 		mana = 0;
 		manaStep = maxMana / 1000000;	// step = 0.0001%
 		maxHp = hp;
@@ -49,8 +51,6 @@ public class Player : MonoBehaviour {
             currentEnemy = enemy;
             anim.SetTrigger("AttackTrigger");
             // anim.Play("Attack", -1, 0f);
-            
-            
         }
     }
 
@@ -92,3 +92,4 @@ public class Player : MonoBehaviour {
         attackCancellation = false;
     }
 }
+
