@@ -28,6 +28,11 @@ public class Stat : MonoBehaviour {
             Calculate();
         }
 	}   
+
+    public void removeTime(float t) {
+        time -= t;
+    }
+    
     public void UpdateCorrectWord()
     {
         correctWord += 1;
