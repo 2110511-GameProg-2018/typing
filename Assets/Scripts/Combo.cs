@@ -16,18 +16,34 @@ public class Combo : MonoBehaviour {
 	void Update () {
 		
 	}
+
     void UpdateCombo()
     {
-        comboText.text = "Combo :" + combo.ToString();
+		if (combo > 0) {
+			comboText.enabled = true;
+			if (combo == 1) {
+				comboText.text = combo.ToString () + " Combo";
+			} else {
+				comboText.text = combo.ToString() + " Combos";
+			}
+		} else {
+			comboText.enabled = false;
+		}
     }
+
     public void increaseCombo()
     {
         combo++;
         UpdateCombo();
     }
+
     public void failCombo()
     {
         combo = 0;
         UpdateCombo();
     }
+
+	public int getCombo(){
+		return combo;
+	}
 }
