@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	public Enemy currentEnemy;
 	public Image enemyHealthBar;
     public Stat stat;
 
     public Enemy[] enemies;
+	private Enemy currentEnemy;
     private int currentStage; //หาก stage ตรง enemy ถึงจะตี
     public TypingUI typingUI;
     public Text statText;
@@ -27,6 +27,10 @@ public class GameController : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        if (enemies == null || enemies.Length == 0) {
+            Debug.LogError("No enemy set in GameController!");
+        }
+        currentEnemy = enemies[0];
         currentStage = 1;
         numberEnemy = 3;
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
@@ -93,6 +97,5 @@ public class GameController : MonoBehaviour {
         typingUI.runinng = true;
         currentEnemy.running = true;
         currentEnemy.SetHealthBar(enemyHealthBar);
-        stat.removeTime(_playerRun.lerpTime);
     }
 }

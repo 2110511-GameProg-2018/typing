@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 80510986}
-  hp: 1
+  hp: 100
   dmg: 5
   attackPeriod: 3
   running: 0
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 334160809}
-  hp: 1
+  hp: 50
   dmg: 5
   attackPeriod: 3
   running: 0
@@ -1870,6 +1870,11 @@ Prefab:
     - target: {fileID: 1301974123646858, guid: d93b2a12e281aa14886485ed58d2f547, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114849229669038726, guid: d93b2a12e281aa14886485ed58d2f547,
+        type: 2}
+      propertyPath: lerpTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d93b2a12e281aa14886485ed58d2f547, type: 2}
@@ -5589,7 +5594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c604ac7b4950c484292591f6d1a09cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemy: {fileID: 2088179512}
   enemyHealthBar: {fileID: 1524669906}
   stat: {fileID: 1037871588}
   enemies:
@@ -6302,7 +6306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2088179513}
-  hp: 1
+  hp: 50
   dmg: 3
   attackPeriod: 3
   running: 0

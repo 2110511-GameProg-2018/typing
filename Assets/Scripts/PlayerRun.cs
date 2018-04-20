@@ -6,14 +6,13 @@ public class PlayerRun : MonoBehaviour {
 
     public GameObject target;
     public float lerpTime = 3.5f;
+    public GameController gameController;
 
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
     private float distance = 12f;
     private float currentLerpTime = 0;
     private bool keyhit = false;
-    private Player player;
-    public GameController gameController;
     private Animator anim;
 
     public Vector3 getStartPos()
