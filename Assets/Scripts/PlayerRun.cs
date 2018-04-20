@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerRun : MonoBehaviour {
 
     public GameObject target;
+    public float lerpTime = 3.5f;
+
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
     private float distance = 12f;
-    private float lerpTime = 3.5f;
     private float currentLerpTime = 0;
     private bool keyhit = false;
     private Player player;

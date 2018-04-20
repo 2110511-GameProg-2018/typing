@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     public Animator anim;
-    public Weapon currentWeapon;
     public int dmg;
     public bool running;
 	public int maxHp;
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour {
 
     public GameController gameController;
     private Enemy currentEnemy;
-    
+    private Weapon currentWeapon;
 
 	void Start() {
 		mana = 0;
@@ -34,7 +33,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update(){
-		print (manaStep);
 		if (mana + manaStep < maxMana) {
 			mana = mana + (manaStep * (combo.getCombo()+1));
 		}else{
@@ -51,6 +49,10 @@ public class Player : MonoBehaviour {
             anim.SetTrigger("AttackTrigger");
             // anim.Play("Attack", -1, 0f);
         }
+    }
+
+    public void setWeapon(Weapon wp) {
+        currentWeapon = wp;
     }
 
     public void Damaged(int damage)
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour {
     private void Hit() 
     {
         if(!attackCancellation)
-            currentEnemy.Damaged(dmg);
+            currentEnemy.Damaged(dmg + (int) currentWeapon.attackPoints);
         attackCancellation = false;
     }
 }

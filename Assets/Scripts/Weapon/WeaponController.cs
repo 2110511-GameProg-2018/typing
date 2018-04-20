@@ -6,6 +6,7 @@ public class WeaponController : MonoBehaviour {
 
 	public GameObject[] weapons;
 	public int currentWeapon;
+	public Player player;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,7 @@ public class WeaponController : MonoBehaviour {
 		}
 		
 		currentWeapon = 0;
+		player.setWeapon(weapons[currentWeapon].GetComponent<Weapon>());
 	}
 	
 	// Update is called once per frame
@@ -25,6 +27,7 @@ public class WeaponController : MonoBehaviour {
 		currentWeapon = weapon;
 		hideAllWeapons();
 		showWeapon(weapon);
+		player.setWeapon(weapons[currentWeapon].GetComponent<Weapon>());
 	}
 
 	private void hideAllWeapons() {
