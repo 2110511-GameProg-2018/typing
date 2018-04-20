@@ -9,23 +9,40 @@ public class Player : MonoBehaviour {
     public int hp;
     public int dmg;
     public bool running;
+	  public int maxHp;
+	  public float maxMana;
+    public bool running
     public bool attackCancellation = false;
 
     public Image healthBar;
 	public Image manaBar;
-    public int maxHp;
+	public Combo combo;
+
+	private float mana;
+	private float manaStep;
 
     public GameController gameController;
     private Enemy currentEnemy;
     
-    public Player(int hp, int dmg)
-    {
-        this.hp = hp;
-        this.dmg = dmg;
-        maxHp = hp;
+
+	void Start() {
+		mana = 0;
+		manaStep = maxMana / 1000000;	// step = 0.0001%
+		maxHp = hp;
 		healthBar.fillAmount = 1;
-        anim = GetComponent<Animator>();
-    }
+		manaBar.fillAmount = 0;
+		anim = GetComponent<Animator>();
+	}
+
+	void Update(){
+		print (manaStep);
+		if (mana + manaStep < maxMana) {
+			mana = mana + (manaStep * (combo.getCombo()+1));
+		}else{
+			mana = maxMana;
+		}
+		manaBar.fillAmount = mana;
+	}
 
     public void Attack(Enemy enemy)
     {
