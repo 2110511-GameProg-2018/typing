@@ -6,13 +6,15 @@ public class WeaponController : MonoBehaviour {
 
 	public GameObject[] weapons;
 	public int currentWeapon;
-	public Player player;
+	private Player player;
 
 	// Use this for initialization
 	void Start () {
 		if (weapons.Length == 0) {
 			Debug.LogError("Error: no weapons in weaponcontroller");
 		}
+
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 		
 		currentWeapon = 0;
 		player.setWeapon(weapons[currentWeapon].GetComponent<Weapon>());

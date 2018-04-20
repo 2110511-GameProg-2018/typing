@@ -21,8 +21,6 @@ public class TypingUI : MonoBehaviour {
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
 
-
-
     public int charCount = 0;
     public Stat typingStat;
 
