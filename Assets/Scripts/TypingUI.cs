@@ -19,6 +19,7 @@ public class TypingUI : MonoBehaviour {
 
     public Text untypedText;
     public Text typedText;
+	public CanvasGroup canvas;
 	private WordSetGenerator generator = new WordSetGenerator();
 
     public CompleteWordEvent onCompleteWord;
@@ -38,7 +39,7 @@ public class TypingUI : MonoBehaviour {
 //		untypedText.text = "mhee ant bird cat dog elephant frog giraffe horse iguana jaguar kangaroo lion monkey " +
 //						   "narwhal owl penguin quail rat snake turtle urial vulture whale xenathra yak zebra";
 		generator.LoadWord("test.txt");
-		addWord (40);
+		AddWord (40);
 		typedText.text = " " + EncodeColor ("", correctColor);
 	}
 	
@@ -107,6 +108,11 @@ public class TypingUI : MonoBehaviour {
 		if (word == "") {
 			return;
 		}
+
+		if (--wordLeftCount <= 20 && autoGenerate) {
+			AddWord (40);
+		}
+
 		if (untypedText.text [0] != ' ' || wrongCount > 0) {
 			text = ReplaceLastWord (text, EncodeColor (word, wrongColor));
 
@@ -114,19 +120,15 @@ public class TypingUI : MonoBehaviour {
 		}
 		else {
             onCompleteWord.Invoke();
+			if (wordLeftCount == 0) {
+				onComplete.Invoke ();
+			}
 		}
 
         wrongCount = 0;
         charCount = 0;
 		untypedText.text = untypedText.text.Remove (0, untypedText.text.IndexOf(' ') + 1);
 		typedText.text = text.Insert (text.Length, " " + EncodeColor("", correctColor));
-
-		if (--wordLeftCount <= 20 && autoGenerate) {
-			addWord (40);
-		}
-		else if (wordLeftCount == 0) {
-			onComplete.Invoke ();
-		}
 	}
 
 	void TypedChar(char c, bool correct) {
@@ -183,8 +185,14 @@ public class TypingUI : MonoBehaviour {
 		return s.Substring(start+1, stop-start-1);
 	}
 
-	void addWord(int n) {
-		untypedText.text += string.Join(" ", generator.getRandomWords(40, "").ToArray()) + " ";
+	public void AddWord(int n) {
+		untypedText.text += string.Join(" ", generator.getRandomWords(n, "").ToArray()) + " ";
 		wordLeftCount += n;
+	}
+
+	public void Reset() {
+		typedText.text = " " + EncodeColor ("", correctColor);
+		untypedText.text = "";
+		wordLeftCount = 0;
 	}
 }

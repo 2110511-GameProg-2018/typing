@@ -37,14 +37,40 @@ public class TypingUIController : MonoBehaviour {
 		set { 
 			if (value == TypingUIState.NORMAL) {
 				_state = value;
-				normalTypingUI.running = true;
-				ultimateTypingUI.running = false;
+				SetNormalRunning (true);
+				SetUltimateRunning (false);
 			}
 			else if (value == TypingUIState.ULTI) {
 				_state = value;
-				normalTypingUI.running = false;
-				ultimateTypingUI.running = true;
+				SetNormalRunning (false);
+				SetUltimateRunning (true);
+				ultimateTypingUI.Reset ();
+				ultimateTypingUI.AddWord (7);
 			}
+		}
+	}
+
+	void SetNormalRunning (bool b) {
+		if (b) {
+			normalTypingUI.running = true;
+			normalTypingUI.canvas.alpha = 1.0f;
+		}
+		else {
+			normalTypingUI.running = false;
+			normalTypingUI.canvas.alpha = 0.3f;
+		}
+	}
+
+	void SetUltimateRunning (bool b) {
+		if (b) {
+			ultimateTypingUI.running = true;
+			ultimateTypingUI.typedText.enabled = true;
+			ultimateTypingUI.untypedText.enabled = true;
+		}
+		else {
+			ultimateTypingUI.running = false;
+			ultimateTypingUI.typedText.enabled = false;
+			ultimateTypingUI.untypedText.enabled = false;
 		}
 	}
 
