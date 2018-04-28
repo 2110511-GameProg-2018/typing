@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
 	public Image enemyHealthBar;
     public Stat stat;
+    public string nextLevel;
 
     public Enemy[] enemies;
 	private Enemy currentEnemy;
@@ -81,6 +83,8 @@ public class GameController : MonoBehaviour {
             + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
             + "\nAccuracy = " + stat.accuracy + "  Correct Char = " + stat.correctChar;
         endPanel.SetActive(true);
+
+        SceneManager.LoadScene(nextLevel);
     }
     public void EndLevel()
     {

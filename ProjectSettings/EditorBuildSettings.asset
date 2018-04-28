@@ -4,4 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/Kan/TestLoad/LevelKan.unity
+    guid: 4e0166ef9112ee446b67ca2116a8c616
+  - enabled: 1
+    path: Assets/_Scenes/Kan/TestLoad/LevelArt.unity
+    guid: 60c52e006ddd573409374e4cced03146
+  - enabled: 1
+    path: Assets/_Scenes/Kan/TestLoad/LevelKris.unity
+    guid: ae783c7f05f5f6e47a341c23297d402c
+  - enabled: 1
+    path: Assets/_Scenes/Kan/TestLoad/LevelBeam.unity
+    guid: d7d6e922a071deb46ac33594131d3102
+  - enabled: 1
+    path: Assets/_Scenes/Kan/TestLoad/LevelIk.unity
+    guid: 45290ce07824e7940a4cda47682c9350
