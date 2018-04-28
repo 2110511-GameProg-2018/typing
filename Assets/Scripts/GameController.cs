@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
     public Stat stat;
     public string nextLevel;
 
+    public GameObject nextLevelButton;
+
     public Enemy[] enemies;
 	private Enemy currentEnemy;
     private int currentStage; //หาก stage ตรง enemy ถึงจะตี
@@ -40,6 +42,7 @@ public class GameController : MonoBehaviour {
 		currentEnemy.SetHealthBar (enemyHealthBar);
         _player.running = true;
         endPanel.SetActive(false);
+        nextLevelButton.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -83,9 +86,14 @@ public class GameController : MonoBehaviour {
             + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
             + "\nAccuracy = " + stat.accuracy + "  Correct Char = " + stat.correctChar;
         endPanel.SetActive(true);
+        nextLevelButton.SetActive(true);
+    }
 
+    public void LoadNextLevel()
+    {
         SceneManager.LoadScene(nextLevel);
     }
+
     public void EndLevel()
     {
         currentStage++;
