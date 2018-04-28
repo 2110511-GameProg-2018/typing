@@ -10,9 +10,12 @@ public class TypingUI : MonoBehaviour {
     public class CompleteWordEvent : UnityEvent { }
     [Serializable]
     public class WrongWordEvent : UnityEvent { }
+	[Serializable]
+	public class CompleteEvent : UnityEvent { }
     
     public Color correctColor;
 	public Color wrongColor;
+	public bool autoGenerate = true;
 
     public Text untypedText;
     public Text typedText;
@@ -20,11 +23,12 @@ public class TypingUI : MonoBehaviour {
 
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
+	public CompleteEvent onComplete;
 
     public int charCount = 0;
     public Stat typingStat;
 
-    public bool runinng = true;
+    public bool running = true;
 
     private int wrongCount = 0;
 	private int wordLeftCount = 0;
@@ -46,7 +50,7 @@ public class TypingUI : MonoBehaviour {
 	void HandleTypeInput () {
 		string input = Input.inputString;
 		char c;
-        if (runinng)
+        if (running)
         {
             for (int i = 0; i < input.Length; i++)
             {
@@ -55,6 +59,9 @@ public class TypingUI : MonoBehaviour {
                 {
                     TypedBackspace();
                 }
+				else if (c == "\n"[0] || c == "\t"[0] || c == "\r"[0]) {
+					
+				}
                 else if (c == ' ')
                 {
                     TypedSpace();
@@ -100,7 +107,7 @@ public class TypingUI : MonoBehaviour {
 		if (word == "") {
 			return;
 		}
-		if (untypedText.text [0] != ' ') {
+		if (untypedText.text [0] != ' ' || wrongCount > 0) {
 			text = ReplaceLastWord (text, EncodeColor (word, wrongColor));
 
 			onWrongWord.Invoke ();
@@ -114,8 +121,11 @@ public class TypingUI : MonoBehaviour {
 		untypedText.text = untypedText.text.Remove (0, untypedText.text.IndexOf(' ') + 1);
 		typedText.text = text.Insert (text.Length, " " + EncodeColor("", correctColor));
 
-		if (--wordLeftCount <= 20) {
+		if (--wordLeftCount <= 20 && autoGenerate) {
 			addWord (40);
+		}
+		else if (wordLeftCount == 0) {
+			onComplete.Invoke ();
 		}
 	}
 

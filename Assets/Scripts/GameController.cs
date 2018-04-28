@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour {
     public void EndGame(string result)
     {
         stat.running = false;
-        typingUI.runinng = false;
+        typingUI.running = false;
         currentEnemy.running = false;
         _player.running = false;
         resultText.text = result;
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour {
     {
         currentStage++;
         stat.running = false;
-        typingUI.runinng = false;
+        typingUI.running = false;
         currentEnemy.running = false;
  
     }
@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour {
     {
         this.setCurrentEnemy(maxEnemy - this.getNumberEnemy());
         stat.running = true;
-        typingUI.runinng = true;
+        typingUI.running = true;
         currentEnemy.running = true;
         currentEnemy.SetHealthBar(enemyHealthBar);
     }

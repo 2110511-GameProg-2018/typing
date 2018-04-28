@@ -18,8 +18,8 @@ public class TypingUITester : MonoBehaviour {
 		
 	}
 
-	public void AddScore() {
-		score++;
+	public void AddScore(int score) {
+		this.score += score;
 		UpdateScoreText ();
 	}
 
