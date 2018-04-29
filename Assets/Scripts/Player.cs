@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 	public Image manaBar;
 	public Combo combo;
 
+    public SFXController sfxController;
+
 	private float mana;
 	private float manaStep;
 
@@ -62,6 +64,9 @@ public class Player : MonoBehaviour {
         // Prevent the attack occuring after damaged (trigger still set)
         anim.ResetTrigger("AttackTrigger");
         // anim.Play("Damaged", -1, 0f);
+
+        sfxController.PlayDamaged();
+
         hp = hp - damage;
 
         if (hp <= 0)
@@ -88,8 +93,10 @@ public class Player : MonoBehaviour {
     /* This function is called on AnimationEvent 'HIT' */
     private void Hit() 
     {
-        if(!attackCancellation)
+        if(!attackCancellation) {
             currentEnemy.Damaged(dmg + (int) currentWeapon.attackPoints);
+            sfxController.PlayAttack();
+        }
         attackCancellation = false;
     }
 }

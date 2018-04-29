@@ -110,6 +110,7 @@ public class Enemy : MonoBehaviour
     /* This function is called on AnimationEvent 'HIT' */
     private void Hit() 
     {
+        Debug.Log("Hit");
         if (running)
         {
             gameController.player.Damaged(dmg);
@@ -119,8 +120,10 @@ public class Enemy : MonoBehaviour
 
     private void OnAttackFinish()
     {
+        Debug.Log("Attack Finished");
         if (running)
-        {
+        {   
+            Debug.Log("Removed Attack Cancellation");
             gameController.player.attackCancellation = false;
         }
     }
