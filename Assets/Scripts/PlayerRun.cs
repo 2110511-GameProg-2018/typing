@@ -11,6 +11,10 @@ public class PlayerRun : MonoBehaviour {
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
     private float distance = 12f;
+
+    //public float height1;
+    //public float height2;
+
     private float currentLerpTime = 0;
     private bool keyhit = false;
     private Animator anim;
@@ -35,6 +39,9 @@ public class PlayerRun : MonoBehaviour {
     void Start () {
         startPos = this.transform.position;
         endPos = this.transform.position + Vector3.forward * distance;
+
+        //endPos = this.transform.position + Vector3.forward * distance +Vector3.up * height1;
+
         anim = GetComponent<Animator>();
     }
 	
@@ -62,6 +69,9 @@ public class PlayerRun : MonoBehaviour {
                 gameController.startLevel();
                 startPos = this.transform.position;
                 endPos = this.transform.position + Vector3.forward * distance;
+
+                //endPos = this.transform.position + Vector3.forward * distance +Vector3.up * height2;
+
                 currentLerpTime = 0;
             }
         }

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
 	public Image enemyHealthBar;
     public Stat stat;
+    public string nextLevel;
+
+    public GameObject nextLevelButton;
+    public GameObject retryButton;
 
     public Enemy[] enemies;
 	private Enemy currentEnemy;
@@ -38,6 +43,8 @@ public class GameController : MonoBehaviour {
 		currentEnemy.SetHealthBar (enemyHealthBar);
         _player.running = true;
         endPanel.SetActive(false);
+        nextLevelButton.SetActive(false);
+        retryButton.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -81,7 +88,26 @@ public class GameController : MonoBehaviour {
             + "\nCorrect Word = " + stat.correctWord + "  Wrong Word = " + stat.wrongWord
             + "\nAccuracy = " + stat.accuracy + "  Correct Char = " + stat.correctChar;
         endPanel.SetActive(true);
+        if (result == "YOU WIN !!")
+        {
+            nextLevelButton.SetActive(true);
+        }
+        else
+        {
+            retryButton.SetActive(true);
+        }
     }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(nextLevel);
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void EndLevel()
     {
         currentStage++;
