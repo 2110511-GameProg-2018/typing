@@ -1955,6 +1955,7 @@ MonoBehaviour:
   attackPeriod: 3
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!95 &80510986
 Animator:
   serializedVersion: 3
@@ -3077,11 +3078,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 120
+  maxHp: 220
   dmg: 40
   attackPeriod: 5
   running: 1
   stageOfEnemy: 1
+  isMainMenu: 0
 --- !u!95 &164391873
 Animator:
   serializedVersion: 3
@@ -5439,6 +5441,7 @@ MonoBehaviour:
   attackPeriod: 3
   running: 0
   stageOfEnemy: 2
+  isMainMenu: 0
 --- !u!95 &334160809
 Animator:
   serializedVersion: 3
@@ -13833,11 +13836,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 300
+  maxHp: 450
   dmg: 40
   attackPeriod: 7
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!65 &920601628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24058,11 +24062,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 160
+  maxHp: 220
   dmg: 45
   attackPeriod: 5
   running: 0
   stageOfEnemy: 2
+  isMainMenu: 0
 --- !u!4 &1635492987 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 2}
@@ -30735,6 +30740,7 @@ MonoBehaviour:
   attackPeriod: 3
   running: 0
   stageOfEnemy: 1
+  isMainMenu: 0
 --- !u!95 &2088179513
 Animator:
   serializedVersion: 3
