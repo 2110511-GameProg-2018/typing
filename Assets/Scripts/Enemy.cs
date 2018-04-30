@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 	public float attackPeriod;
     public bool running;
     public int stageOfEnemy;
+    public bool isMainMenu;
 
     // Private Fields //
     private Image healthBar;
@@ -31,18 +32,20 @@ public class Enemy : MonoBehaviour
         if (maxHp == 0) {
             Debug.Log("Error: Enemy Max HP cannot be set to 0!");
         }
-
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
-        anim = GetComponent<Animator>();
-
-        // Get game controller from controllers
-        Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
-        gameController = controllers.gameController;
-
-		attackTimer = attackPeriod;
-        if(stageOfEnemy == gameController.getCurrentStage())
+        if (!isMainMenu)
         {
-            running = true;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            anim = GetComponent<Animator>();
+
+            // Get game controller from controllers
+            Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+            gameController = controllers.gameController;
+
+            attackTimer = attackPeriod;
+            if (stageOfEnemy == gameController.getCurrentStage())
+            {
+                running = true;
+            }
         }
     }
 

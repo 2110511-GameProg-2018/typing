@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1798119904}
-  m_IndirectSpecularColor: {r: 0.40641513, g: 0.42339236, b: 0.44753647, a: 1}
+  m_IndirectSpecularColor: {r: 0.40637544, g: 0.42338395, b: 0.44751662, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -298,6 +298,7 @@ MonoBehaviour:
   attackPeriod: 5
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!95 &80510986
 Animator:
   serializedVersion: 3
@@ -675,9 +676,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 80
   dmg: 10
-  attackPeriod: 3
+  attackPeriod: 5
   running: 0
   stageOfEnemy: 2
+  isMainMenu: 0
 --- !u!4 &323089120 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba,
@@ -4834,9 +4836,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   dmg: 15
-  attackPeriod: 2
+  attackPeriod: 4
   running: 0
   stageOfEnemy: 1
+  isMainMenu: 0
 --- !u!4 &1889740921 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da,
