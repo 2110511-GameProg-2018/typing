@@ -623,11 +623,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 5
-  attackPeriod: 10
+  maxHp: 50
+  dmg: 15
+  attackPeriod: 8
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!1001 &135492229
 Prefab:
   m_ObjectHideFlags: 0
@@ -3548,7 +3549,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 489960762}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -15, y: 0, z: 15}
+  m_LocalPosition: {x: -10, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1388490059}
@@ -3660,11 +3661,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 1
-  attackPeriod: 10
+  maxHp: 40
+  dmg: 12
+  attackPeriod: 8
   running: 0
   stageOfEnemy: 2
+  isMainMenu: 0
 --- !u!1001 &550196239
 Prefab:
   m_ObjectHideFlags: 0
@@ -4211,6 +4213,11 @@ Prefab:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 815215032}
+    - target: {fileID: 114114160072586472, guid: d93b2a12e281aa14886485ed58d2f547,
+        type: 2}
+      propertyPath: dmg
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d93b2a12e281aa14886485ed58d2f547, type: 2}
   m_IsPrefabParent: 0
@@ -5542,6 +5549,63 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 417258, guid: ac7a01ca06ca9044eb15b32cb7a936f8, type: 2}
   m_PrefabInternal: {fileID: 847129127}
+--- !u!1001 &862613049
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.0170364
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.0509758
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5.371136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 82132195112340686, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 298c1bc19cf73f644b8200aeb4a8eaa1, type: 3}
+    - target: {fileID: 114103586682407082, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: loopLength
+      value: 93.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103586682407082, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: loopStartPosition
+      value: 60
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &867646057
 GameObject:
   m_ObjectHideFlags: 0
@@ -9741,6 +9805,7 @@ MonoBehaviour:
   attackPeriod: 3
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!1001 &983631933
 Prefab:
   m_ObjectHideFlags: 0
@@ -13812,11 +13877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 3
-  attackPeriod: 10
+  maxHp: 40
+  dmg: 10
+  attackPeriod: 8
   running: 1
   stageOfEnemy: 1
+  isMainMenu: 0
 --- !u!1001 &1662180430
 Prefab:
   m_ObjectHideFlags: 0
@@ -14368,6 +14434,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlockWeapon.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4184266008565624, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.400257
@@ -14500,6 +14581,31 @@ Prefab:
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1264684258}
+    - target: {fileID: 114299730458084570, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: nextLevelName
+      value: LevelArt
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
   m_IsPrefabParent: 0

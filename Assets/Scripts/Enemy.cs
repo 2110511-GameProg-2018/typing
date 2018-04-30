@@ -11,12 +11,14 @@ public class Enemy : MonoBehaviour
 	public float attackPeriod;
     public bool running;
     public int stageOfEnemy;
+    public bool isMainMenu;
 
     // Private Fields //
     private Image healthBar;
     private int hp;
 	private Player player;
 	private float attackTimer;
+    private bool isDead;
     
     private Animator anim;
 
@@ -28,21 +30,24 @@ public class Enemy : MonoBehaviour
 
 
 	void Start () {
+        isDead = false;
         if (maxHp == 0) {
             Debug.Log("Error: Enemy Max HP cannot be set to 0!");
         }
-
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
-        anim = GetComponent<Animator>();
-
-        // Get game controller from controllers
-        Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
-        gameController = controllers.gameController;
-
-		attackTimer = attackPeriod;
-        if(stageOfEnemy == gameController.getCurrentStage())
+        if (!isMainMenu)
         {
-            running = true;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            anim = GetComponent<Animator>();
+
+            // Get game controller from controllers
+            Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+            gameController = controllers.gameController;
+
+            attackTimer = attackPeriod;
+            if (stageOfEnemy == gameController.getCurrentStage())
+            {
+                running = true;
+            }
         }
     }
 
@@ -95,16 +100,19 @@ public class Enemy : MonoBehaviour
 	}
 
     public void Die()
-    {
-        anim.SetTrigger("DeadTrigger");
-        gameController.decreaseNumberEnemy();
-        // anim.Play("Death", -1, 0f);
-        if (gameController.getNumberEnemy() > 0)
-        {
-            gameController.EndLevel();
-        }
-        else{
-            gameController.EndGame("YOU WIN !!");
+    {   
+        if(!isDead) {
+            isDead = true;
+            anim.SetTrigger("DeadTrigger");
+            gameController.decreaseNumberEnemy();
+            // anim.Play("Death", -1, 0f);
+            if (gameController.getNumberEnemy() > 0)
+            {
+                gameController.EndLevel();
+            }
+            else{
+                gameController.EndGame("YOU WIN !!");
+            }
         }
     }
 
