@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class WordSetLoader : MonoBehaviour {
+public class WordSetLoader {
     List<string> WordPool = new List<string>();
     public List<string> LoadWord(string filename) // "filename.txt"
     {
@@ -20,17 +20,8 @@ public class WordSetLoader : MonoBehaviour {
         }
         return WordPool;
     }
-    public List<string> getWordPool()
+    public List<string> GetWordPool()
     {
         return WordPool;
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

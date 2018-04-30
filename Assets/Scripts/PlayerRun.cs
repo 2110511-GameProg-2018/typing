@@ -6,15 +6,20 @@ public class PlayerRun : MonoBehaviour {
 
     public GameObject target;
     public float lerpTime = 3.5f;
-    public GameController gameController;
+    public float distance = 12f;
 
+    private GameController gameController;
     private Vector3 startPos; //Start
     private Vector3 endPos; //End
-    private float distance = 12f;
+
+    //public float height1;
+    //public float height2;
+
     private float currentLerpTime = 0;
     private bool keyhit = false;
     private Animator anim;
 
+    // Getters and Setters
     public Vector3 getStartPos()
     {
         return this.startPos;
@@ -31,10 +36,19 @@ public class PlayerRun : MonoBehaviour {
     {
         this.keyhit = boolean;
     }
+
     // Use this for initialization
     void Start () {
+
+        // Controlelrs
+        Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+        gameController = controllers.gameController;
+
         startPos = this.transform.position;
         endPos = this.transform.position + Vector3.forward * distance;
+
+        //endPos = this.transform.position + Vector3.forward * distance +Vector3.up * height1;
+        
         anim = GetComponent<Animator>();
     }
 	
@@ -56,12 +70,17 @@ public class PlayerRun : MonoBehaviour {
             float Perc = currentLerpTime / lerpTime;
             transform.position = Vector3.Lerp(startPos, endPos, Perc);
             if(this.transform.position == this.getEndPos())
-            {
+            {   
+                Debug.Log("Stopped Running");
+
                 this.setKeyHit(false);
                 anim.SetBool("isRunning", false);
                 gameController.startLevel();
                 startPos = this.transform.position;
                 endPos = this.transform.position + Vector3.forward * distance;
+
+                //endPos = this.transform.position + Vector3.forward * distance +Vector3.up * height2;
+
                 currentLerpTime = 0;
             }
         }
