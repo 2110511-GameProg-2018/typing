@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1306331116634078
 GameObject:
   m_ObjectHideFlags: 1
@@ -892,7 +892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1468624363519952
 GameObject:
   m_ObjectHideFlags: 1
@@ -3439,17 +3439,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8a67c3a2367ca48bc07d91894f079e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 95257827340506554}
-  currentWeapon: {fileID: 0}
-  dmg: 10
+  dmg: 500
   running: 1
   maxHp: 100
   maxMana: 10
   attackCancellation: 0
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
-  combo: {fileID: 0}
-  gameController: {fileID: 0}
 --- !u!114 &114236292002991946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3514,7 +3510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1227632515826952}
-  gameController: {fileID: 0}
+  lerpTime: 3
+  distance: 12
 --- !u!137 &137101761844322536
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
