@@ -27,11 +27,11 @@ public class WeaponController : MonoBehaviour {
 		currentWeapon = 0;
 		player.setWeapon(weapons[currentWeapon].GetComponent<Weapon>());
 
-		// Unlock first weapon and lock the rest
-		UnlockWeapon(0);
-		for (int i = 1; i < weapons.Length; i++) {
-            if(!isWeaponUnlocked[i])
-			    LockWeapon(i);
+		for (int i = 0; i < weapons.Length; i++) {
+            if (!isWeaponUnlocked[i])
+                LockWeapon(i);
+            else
+                UnlockWeapon(i);
 		}
 	}
 	

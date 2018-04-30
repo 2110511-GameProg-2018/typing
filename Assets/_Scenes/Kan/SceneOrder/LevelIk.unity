@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 595087722}
-  m_IndirectSpecularColor: {r: 0.5623202, g: 0.53287727, b: 0.49586946, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -994,6 +994,11 @@ Prefab:
     - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
         type: 2}
       propertyPath: isWeaponUnlocked.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
