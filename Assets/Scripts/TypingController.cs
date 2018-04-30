@@ -12,17 +12,22 @@ public class TypingController : MonoBehaviour {
 
     [Serializable]
     public class WrongWordEvent : UnityEvent { }
+	[Serializable]
+	public class CompleteEvent : UnityEvent { }
     
     public Color correctColor;
 	public Color wrongColor;
+	public bool autoGenerate = true;
 
     public Text untypedText;
     public Text typedText;
+	
 	private WordSetGenerator wordSetGenerator = new WordSetGenerator();
 	private WordSetLoader wordSetLoader = new WordSetLoader();
 
     public CompleteWordEvent onCompleteWord;
     public WrongWordEvent onWrongWord;
+	public CompleteEvent onComplete;
 
     public int charCount = 0;
 	
@@ -63,6 +68,9 @@ public class TypingController : MonoBehaviour {
                 {
                     TypedBackspace();
                 }
+				else if (c == "\n"[0] || c == "\t"[0] || c == "\r"[0]) {
+					
+				}
                 else if (c == ' ')
                 {
                     TypedSpace();
@@ -108,13 +116,21 @@ public class TypingController : MonoBehaviour {
 		if (word == "") {
 			return;
 		}
-		if (untypedText.text [0] != ' ') {
+
+		if (--wordLeftCount <= 20 && autoGenerate) {
+			AddWord (40);
+		}
+
+		if (untypedText.text [0] != ' ' || wrongCount > 0) {
 			text = ReplaceLastWord (text, EncodeColor (word, wrongColor));
 
 			onWrongWord.Invoke ();
 		}
 		else {
             onCompleteWord.Invoke();
+			if (wordLeftCount == 0) {
+				onComplete.Invoke ();
+			}
 		}
 
         wrongCount = 0;
@@ -184,5 +200,11 @@ public class TypingController : MonoBehaviour {
 	void AddWord(int n) {
 		untypedText.text += string.Join(" ", wordSetGenerator.getRandomWords(40, wordSetLoader.GetWordPool()).ToArray()) + " ";
 		wordLeftCount += n;
+	}
+
+	public void Reset() {
+		typedText.text = " " + EncodeColor ("", correctColor);
+		untypedText.text = "";
+		wordLeftCount = 0;
 	}
 }

@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour {
 
     public void EndGame(string result)
     {
+
         statController.running = false;
         typingController.running = false;
         currentEnemy.running = false;

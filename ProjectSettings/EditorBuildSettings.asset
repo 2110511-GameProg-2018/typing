@@ -5,39 +5,42 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/_Scenes/Art/Menu.unity
+  - enabled: 0
+    path: Assets/_Scenes/Art/Menu1.unity
     guid: 0fdea1f05a28ead42a3ecd9e0c4c44f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Art/Game.unity
     guid: e75e5530acc599b4391c3efe04004686
   - enabled: 0
-    path: Assets/_Scenes/Kan/TestLoad/LevelKan.unity
-    guid: 4e0166ef9112ee446b67ca2116a8c616
-  - enabled: 0
-    path: Assets/_Scenes/Kan/TestLoad/LevelArt.unity
-    guid: 60c52e006ddd573409374e4cced03146
-  - enabled: 0
-    path: Assets/_Scenes/Kan/TestLoad/LevelKris.unity
-    guid: ae783c7f05f5f6e47a341c23297d402c
-  - enabled: 0
-    path: Assets/_Scenes/Kan/TestLoad/LevelBeam.unity
-    guid: d7d6e922a071deb46ac33594131d3102
-  - enabled: 0
-    path: Assets/_Scenes/Kan/TestLoad/LevelIk.unity
-    guid: 45290ce07824e7940a4cda47682c9350
-  - enabled: 1
     path: Assets/_Scenes/Kris/Levels/LevelKan.unity
     guid: 95a9df853417dd1418d08ecbd8dbf5ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Kris/Levels/LevelArt.unity
     guid: 711b2cbc4a4b54644bf9f0cb5410dca1
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Kris/Levels/LevelKris.unity
     guid: 90f6d0548a91b6348b14f749a350cdad
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Kris/Levels/LevelBeam.unity
     guid: 242e658ef709abd4691d694fae7a49d5
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Kris/Levels/LevelIk.unity
     guid: 7932364016f1d7e40984111aabb0c208
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/Main menu.unity
+    guid: 184b5d1822318ff4f962ee73b06faf46
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/LevelBeam.unity
+    guid: a3c1180ac5d64ea49862411f9812cc9f
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/LevelArt.unity
+    guid: 3d40dc21b9ec3414783b666b9a826f38
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/LevelKan.unity
+    guid: 008348e4f43a9594394836aa759ba369
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/LevelKris.unity
+    guid: 6e7573bac98b2e948b0006b53b743dad
+  - enabled: 1
+    path: Assets/_Scenes/Kan/SceneOrder/LevelIk.unity
+    guid: e59145a1ea7dcdc4a994a152fa24220e
