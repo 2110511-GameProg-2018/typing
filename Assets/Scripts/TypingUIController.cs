@@ -7,7 +7,12 @@ public class TypingUIController : MonoBehaviour {
 	public TypingUI normalTypingUI;
 	public TypingUI ultimateTypingUI;
 
+	public float prepareTime = 1;
+
+	private GameController gc;
+
 	private TypingUIState _state;
+	private float timeCounter = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +31,21 @@ public class TypingUIController : MonoBehaviour {
 				if (state == TypingUIState.NORMAL) {
 					state = TypingUIState.ULTI;
 				}
+			}
+		}
+
+		if (state == TypingUIState.PREPARE) {
+			timeCounter -= Time.deltaTime;
+			if (timeCounter <= 0) {
+				state = TypingUIState.NORMAL;
+			}
+		}
+		if (state == TypingUIState.ULTING) {
+			if (ultimateTypingUI.canvas.alpha > 0) {
+				ultimateTypingUI.canvas.alpha -= Time.deltaTime;
+			}
+			else {
+				ultimateTypingUI.canvas.alpha = 0;
 			}
 		}
 	}
@@ -47,6 +67,20 @@ public class TypingUIController : MonoBehaviour {
 				ultimateTypingUI.Reset ();
 				ultimateTypingUI.AddWord (7);
 			}
+			else if (value == TypingUIState.PREPARE) {
+				_state = value;
+				SetNormalRunning (false);
+				ultimateTypingUI.running = false;
+				ultimateTypingUI.typedText.enabled = true;
+				ultimateTypingUI.untypedText.enabled = true;
+				ultimateTypingUI.canvas.alpha = 1.0f;
+				timeCounter = prepareTime;
+			}
+			else if (value == TypingUIState.ULTING && _state == TypingUIState.ULTI) {
+				_state = value;
+				ultimateTypingUI.running = false;
+				timeCounter = prepareTime;
+			}
 		}
 	}
 
@@ -66,11 +100,13 @@ public class TypingUIController : MonoBehaviour {
 			ultimateTypingUI.running = true;
 			ultimateTypingUI.typedText.enabled = true;
 			ultimateTypingUI.untypedText.enabled = true;
+			gc.getCurrentEnemy ().running = false;
 		}
 		else {
 			ultimateTypingUI.running = false;
 			ultimateTypingUI.typedText.enabled = false;
 			ultimateTypingUI.untypedText.enabled = false;
+			gc.getCurrentEnemy ().running = true;
 		}
 	}
 

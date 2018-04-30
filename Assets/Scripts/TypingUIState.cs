@@ -5,5 +5,7 @@ using UnityEngine;
 public enum TypingUIState : int {
 
 	NORMAL,
-	ULTI
+	ULTI,
+	PREPARE,
+	ULTING
 }
