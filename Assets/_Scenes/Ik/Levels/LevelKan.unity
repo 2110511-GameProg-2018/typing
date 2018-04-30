@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 595087722}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641234, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -664,11 +664,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4184266008565624, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.400257
@@ -805,16 +800,6 @@ Prefab:
         type: 2}
       propertyPath: nextLevelName
       value: LevelKris
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.data[0]
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
@@ -985,12 +970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 220
+  maxHp: 100
   dmg: 30
   attackPeriod: 3
   running: 0
   stageOfEnemy: 3
-  isMainMenu: 0
 --- !u!95 &80510986
 Animator:
   serializedVersion: 3
@@ -3686,12 +3670,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 180
+  maxHp: 80
   dmg: 20
   attackPeriod: 3
   running: 0
   stageOfEnemy: 2
-  isMainMenu: 0
 --- !u!95 &334160809
 Animator:
   serializedVersion: 3
@@ -23448,12 +23431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 180
+  maxHp: 80
   dmg: 20
   attackPeriod: 3
   running: 1
   stageOfEnemy: 1
-  isMainMenu: 0
 --- !u!95 &2088179513
 Animator:
   serializedVersion: 3

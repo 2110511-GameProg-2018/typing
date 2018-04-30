@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1798119904}
-  m_IndirectSpecularColor: {r: 0.40637544, g: 0.42338395, b: 0.44751662, a: 1}
+  m_IndirectSpecularColor: {r: 0.40641513, g: 0.42339236, b: 0.44753647, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -293,12 +293,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 80
   dmg: 20
   attackPeriod: 5
   running: 0
   stageOfEnemy: 3
-  isMainMenu: 0
 --- !u!95 &80510986
 Animator:
   serializedVersion: 3
@@ -674,12 +673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 40
+  maxHp: 80
   dmg: 10
   attackPeriod: 3
   running: 0
   stageOfEnemy: 2
-  isMainMenu: 0
 --- !u!4 &323089120 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba,
@@ -3150,11 +3148,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4184266008565624, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.400257
@@ -3290,17 +3283,7 @@ Prefab:
     - target: {fileID: 114299730458084570, guid: 5cfcad0c45549d447a2f0d488ea888e8,
         type: 2}
       propertyPath: nextLevelName
-      value: LevelKan
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
-        type: 2}
-      propertyPath: isWeaponUnlocked.Array.data[0]
-      value: 1
+      value: LevelBeam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
@@ -4849,12 +4832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 40
-  dmg: 10
-  attackPeriod: 3
+  maxHp: 50
+  dmg: 15
+  attackPeriod: 2
   running: 0
   stageOfEnemy: 1
-  isMainMenu: 0
 --- !u!4 &1889740921 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da,

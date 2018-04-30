@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 595087722}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -628,6 +628,7 @@ MonoBehaviour:
   attackPeriod: 8
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!1001 &135492229
 Prefab:
   m_ObjectHideFlags: 0
@@ -3665,6 +3666,7 @@ MonoBehaviour:
   attackPeriod: 8
   running: 0
   stageOfEnemy: 2
+  isMainMenu: 0
 --- !u!1001 &550196239
 Prefab:
   m_ObjectHideFlags: 0
@@ -9746,6 +9748,7 @@ MonoBehaviour:
   attackPeriod: 3
   running: 0
   stageOfEnemy: 3
+  isMainMenu: 0
 --- !u!1001 &983631933
 Prefab:
   m_ObjectHideFlags: 0
@@ -13822,6 +13825,7 @@ MonoBehaviour:
   attackPeriod: 8
   running: 1
   stageOfEnemy: 1
+  isMainMenu: 0
 --- !u!1001 &1662180430
 Prefab:
   m_ObjectHideFlags: 0
@@ -14373,6 +14377,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlockWeapon.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4184266008565624, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.400257
@@ -14505,6 +14524,31 @@ Prefab:
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1264684258}
+    - target: {fileID: 114299730458084570, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: nextLevelName
+      value: LevelArt
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: unlocks.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330179980945568, guid: 5cfcad0c45549d447a2f0d488ea888e8,
+        type: 2}
+      propertyPath: isWeaponUnlocked.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cfcad0c45549d447a2f0d488ea888e8, type: 2}
   m_IsPrefabParent: 0
