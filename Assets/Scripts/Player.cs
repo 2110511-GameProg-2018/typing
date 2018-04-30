@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 
 	private float mana;
 	private float manaStep;
+	private bool ultiMode = false;
 
     private Enemy currentEnemy;
     private Weapon currentWeapon;
@@ -56,6 +57,13 @@ public class Player : MonoBehaviour {
 			mana = maxMana;
 		}
 		manaBar.fillAmount = mana;
+
+		if (ultiMode) {
+			mana -= Time.deltaTime * 0.7;
+			if (mana <= 0) {
+				ultiMode = false;
+			}
+		}
 	}
 
     public void Attack(Enemy enemy)
@@ -114,5 +122,13 @@ public class Player : MonoBehaviour {
         }
         attackCancellation = false;
     }
+
+	public void SetUltiMode(bool b) {
+		ultiMode = b;
+	}
+
+	public void Ultimate() {
+		anim.SetTrigger("UltiTrigger");
+	}
 }
 
