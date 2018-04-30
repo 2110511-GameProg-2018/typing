@@ -985,8 +985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 220
-  dmg: 30
+  maxHp: 200
+  dmg: 28
   attackPeriod: 3
   running: 0
   stageOfEnemy: 3
@@ -2596,6 +2596,63 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 445910, guid: c63ea781a273235439e583799176c846, type: 2}
   m_PrefabInternal: {fileID: 252547983}
+--- !u!1001 &255896932
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.0170364
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.0509758
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5.371136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778601422801250, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 82132195112340686, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d9992166a9d78a4d97fb22f9a52f02a, type: 3}
+    - target: {fileID: 114103586682407082, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: loopLength
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103586682407082, guid: 0bb32aa350c430e4e80c8fef81454735,
+        type: 2}
+      propertyPath: loopStartPosition
+      value: 150
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0bb32aa350c430e4e80c8fef81454735, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &258205114
 Prefab:
   m_ObjectHideFlags: 0
@@ -3686,7 +3743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 180
+  maxHp: 150
   dmg: 20
   attackPeriod: 3
   running: 0
@@ -23448,7 +23505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 180
+  maxHp: 150
   dmg: 20
   attackPeriod: 3
   running: 1
