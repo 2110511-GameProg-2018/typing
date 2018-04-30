@@ -4,40 +4,55 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-    public Animator anim;
+
+    // Public Fields //
     public int dmg;
     public bool running;
 	public int maxHp;
 	public float maxMana;
     public bool attackCancellation = false;
-    private int hp;
 
+    [Header("UI Elements")]
     public Image healthBar;
 	public Image manaBar;
-	public Combo combo;
 
-    public SFXController sfxController;
+    // Private Fields //
+
+    private SFXController sfxController;
+    private GameController gameController;
+	private ComboController comboController;
+
+    private int hp;
 
 	private float mana;
 	private float manaStep;
 
-    public GameController gameController;
     private Enemy currentEnemy;
     private Weapon currentWeapon;
 
+    private Animator anim;
+
 	void Start() {
+        // Controlelrs
+        Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+        sfxController = controllers.sfxController;
+        gameController = controllers.gameController;
+        comboController = controllers.comboController;
+
+        // HP and Mana
 		mana = 0;
 		manaStep = maxMana / 1000000;	// step = 0.0001%
 		hp = maxHp;
 		healthBar.fillAmount = 1;
 		manaBar.fillAmount = 0;
+
 		anim = GetComponent<Animator>();
 	}
 
 	void Update(){
 		if (mana + manaStep < maxMana) {
-			mana = mana + (manaStep * (combo.getCombo()+1));
-		}else{
+			mana = mana + (manaStep * (comboController.getCombo() + 1));
+		} else {
 			mana = maxMana;
 		}
 		manaBar.fillAmount = mana;

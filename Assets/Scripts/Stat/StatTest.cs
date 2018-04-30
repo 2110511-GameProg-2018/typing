@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StatTest : MonoBehaviour {
-    public Stat typingStat;
+    public StatController typingStat;
     public Text typingStatText;
 
 	// Use this for initialization

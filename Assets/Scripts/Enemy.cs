@@ -5,29 +5,40 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Animator anim;
-    public int hp;
+    // Public Fields //
+	public int maxHp;
     public int dmg;
 	public float attackPeriod;
     public bool running;
     public int stageOfEnemy;
+
+    // Private Fields //
     private Image healthBar;
-	private int maxHp;
+    private int hp;
 	private Player player;
 	private float attackTimer;
     
-    public GameController gameController;
+    private Animator anim;
 
-    public Enemy(int hp, int dmg)
-    {
-        this.hp = hp;
-        this.dmg = dmg;
-		maxHp = hp;
-        anim = GetComponent<Animator>();
+    private GameController gameController;
+
+    void Awake () {
+        hp = maxHp;
     }
 
+
 	void Start () {
+        if (maxHp == 0) {
+            Debug.Log("Error: Enemy Max HP cannot be set to 0!");
+        }
+
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+        anim = GetComponent<Animator>();
+
+        // Get game controller from controllers
+        Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+        gameController = controllers.gameController;
+
 		attackTimer = attackPeriod;
         if(stageOfEnemy == gameController.getCurrentStage())
         {
@@ -37,10 +48,9 @@ public class Enemy : MonoBehaviour
 
 	void Update () {
 
-		//don't do anything without target
+		// If target is not found, do nothing.
 		if(player == null) return;
 
-        //found target, what now ?
         if (running)
         {
             if (attackTimer > 0f)
@@ -57,7 +67,6 @@ public class Enemy : MonoBehaviour
     public void Attack(Player player)
     {
         anim.SetTrigger("AttackTrigger");
-        // anim.Play("Attack", -1, 0f);
         attackTimer = attackPeriod;
     }
 
@@ -67,8 +76,6 @@ public class Enemy : MonoBehaviour
         {
             // Set the animation to be 'damaged'
             anim.SetTrigger("DamagedTrigger");
-
-            // anim.Play("Damaged", -1, 0f);
         }
         hp = hp - damage;
 
@@ -84,7 +91,7 @@ public class Enemy : MonoBehaviour
 	public void SetHealthBar(Image image) {
 		healthBar = image;
 		healthBar.fillAmount = 1;
-		maxHp = hp;
+		hp = maxHp;
 	}
 
     public void Die()
@@ -105,7 +112,6 @@ public class Enemy : MonoBehaviour
     {
         return hp == 0;
     }
-
 
     /* This function is called on AnimationEvent 'HIT' */
     private void Hit() 

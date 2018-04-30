@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class IkPlayerRun : MonoBehaviour {
 
-	public GameController gameController;
 	public float velocity = 4.0f;
+
+	private GameController gameController;
 
 	private bool keyhit = false;
 	private Animator anim;
@@ -22,8 +23,12 @@ public class IkPlayerRun : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Controllers controllers = GameObject.FindGameObjectWithTag("Controllers").GetComponent<Controllers>();
+        gameController = controllers.gameController;
+
 		anim = GetComponent<Animator>();
 		rg = GetComponent<Rigidbody> ();
+		
 	}
 
 	// Update is called once per frame
@@ -42,6 +47,7 @@ public class IkPlayerRun : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
+		Debug.Log("OnTriggerEnter");
 		this.setKeyHit(false);
 		anim.SetBool("isRunning", false);
 		rg.velocity = new Vector3(0, 0, 0);
