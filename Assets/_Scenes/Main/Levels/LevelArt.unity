@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1798119904}
-  m_IndirectSpecularColor: {r: 0.40637544, g: 0.42338395, b: 0.44751662, a: 1}
+  m_IndirectSpecularColor: {r: 0.40641513, g: 0.42339236, b: 0.44753647, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -293,9 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 5
-  attackPeriod: 3
+  maxHp: 80
+  dmg: 20
+  attackPeriod: 5
   running: 0
   stageOfEnemy: 3
 --- !u!95 &80510986
@@ -673,8 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 2
+  maxHp: 80
+  dmg: 10
   attackPeriod: 3
   running: 0
   stageOfEnemy: 2
@@ -992,7 +992,7 @@ Prefab:
     - target: {fileID: 114114160072586472, guid: d93b2a12e281aa14886485ed58d2f547,
         type: 2}
       propertyPath: dmg
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4546595871707614, guid: d93b2a12e281aa14886485ed58d2f547, type: 2}
       propertyPath: m_LocalScale.x
@@ -1015,6 +1015,11 @@ Prefab:
         type: 2}
       propertyPath: distance
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114114160072586472, guid: d93b2a12e281aa14886485ed58d2f547,
+        type: 2}
+      propertyPath: maxHp
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d93b2a12e281aa14886485ed58d2f547, type: 2}
@@ -4827,9 +4832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986f64e0cae5f499500c173ebc5f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  dmg: 2
-  attackPeriod: 3
+  maxHp: 50
+  dmg: 15
+  attackPeriod: 2
   running: 0
   stageOfEnemy: 1
 --- !u!4 &1889740921 stripped
